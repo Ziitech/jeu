@@ -22,7 +22,7 @@ public class FractaleFrame extends JFrame implements Vue, MouseMotionListener{
 	 */
 	private BoutonActualise bouton;
 	/**
-	 * Label Position coordonnée de la souris
+	 * Label Position coordonnï¿½e de la souris
 	 */
 	private LabelCoord coordonnee;
 	/**
@@ -37,8 +37,8 @@ public class FractaleFrame extends JFrame implements Vue, MouseMotionListener{
 		
 		this.setTitle("Les FRACTALS de Mandelbrot");	      	//	Ajouter un titre
 		this.setSize(800,800);									//	Taille de la fenetre
-		this.setLocationRelativeTo(null);						//	Fenetre au milieu de l'écran
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	//	Ferme complètement le programme quand on ferme la fenetre
+		this.setLocationRelativeTo(null);						//	Fenetre au milieu de l'ï¿½cran
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	//	Ferme complï¿½tement le programme quand on ferme la fenetre
 		this.setResizable(false);								//	Bloquer la modification de la taille de la fenetre 									
 		panel.setLayout(null);
 		
@@ -54,7 +54,7 @@ public class FractaleFrame extends JFrame implements Vue, MouseMotionListener{
 	    panel.add(coordonnee);
 
 		this.setContentPane(panel);
-		this.setVisible(true);									//	Visibilité de la fenetre	
+		this.setVisible(true);									//	Visibilitï¿½ de la fenetre	
 
 	    addMouseMotionListener(this);
 	}
@@ -90,6 +90,7 @@ public class FractaleFrame extends JFrame implements Vue, MouseMotionListener{
 	 */
 	public static void main(String[] args) 
 	{
+		System.out.println("coucou");
 		SwingUtilities.invokeLater(new Runnable() 
 		{
 			@Override
