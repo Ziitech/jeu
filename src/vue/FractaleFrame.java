@@ -93,7 +93,7 @@ public class FractaleFrame extends JFrame implements Vue, MouseMotionListener{
 		SwingUtilities.invokeLater(new Runnable() 
 		{
 			@Override
-			public void run() 
+			public void run() S
 			{
 				new FractaleFrame();
 			}	
