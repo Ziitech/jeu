@@ -1,6 +1,12 @@
 package vue.sprite;
 
 public class Sprite {
+
+	
+	public static Sprite snake = new Sprite(32, 1, 0, SpriteSheet.sheet1);
+	public static Sprite particule = new Sprite(32, 3, 0, SpriteSheet.sheet1);
+	public static Sprite bombe = new Sprite(32, 4, 0, SpriteSheet.sheet1);
+	public static Sprite player = new Sprite(64, 0, 6, SpriteSheet.sheet1);
 	
 	public int[] pixels;
 	protected SpriteSheet sheet;

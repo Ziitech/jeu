@@ -6,15 +6,14 @@ public class EntityTechnique implements Runnable{
 	
 	private Entity e;
 	private Thread thread;
+	
+	private boolean needRemove;
 
 	public EntityTechnique(Entity e) {
 		this.e = e;
+		this.needRemove = false;
 		thread = new Thread(this);
 		thread.start();
-	}
-	
-	public String getEntityClassName() {
-		return e.getClass().getSimpleName();
 	}
 
 	@Override
@@ -28,6 +27,7 @@ public class EntityTechnique implements Runnable{
 				}
 		}
 		try {
+			needRemove = true;
 			thread.join();
 		} catch (InterruptedException e1) {
 			e1.printStackTrace();
@@ -40,6 +40,18 @@ public class EntityTechnique implements Runnable{
 	
 	public int getY() {
 		return e.getY();
+	}
+	
+	public boolean getFlip() {
+		return e.getFlip();
+	}
+	
+	public boolean needRemove() {
+		return needRemove;
+	}
+
+	public int getType() {
+		return e.getType();
 	}
 
 

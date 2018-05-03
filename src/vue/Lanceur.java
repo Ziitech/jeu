@@ -1,14 +1,17 @@
 package vue;
 
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
+
 public class Lanceur {
 
 	public Lanceur() {
 	}
 
 	public static void main(String[] args) {
-		//new TestVue();
-		int h = 500;
-		int w = h * (16/9);
+		GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+		int w = gd.getDisplayMode().getWidth();
+		int h = gd.getDisplayMode().getHeight();
 		new Cadre(w,h);
 	}
 

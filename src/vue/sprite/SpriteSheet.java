@@ -6,6 +6,8 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class SpriteSheet {
+	
+	public static SpriteSheet sheet1 = new SpriteSheet("/Player.png", 512);
 
 	private String path;
 	public int[] pixels;

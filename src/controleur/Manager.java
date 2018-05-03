@@ -3,9 +3,16 @@ package controleur;
 import java.util.List;
 import java.util.Vector;
 
+import modele.metier.Carte;
+import modele.metier.entities.Entity;
 import modele.metier.entities.mob.Bombe;
+import modele.metier.entities.mob.Joueur;
+import modele.metier.entities.mob.Particule;
 import modele.technique.entities.EntityTechnique;
+import modele.technique.input.KeyboardTechnique;
+import modele.technique.input.MouseTechnique;
 import vue.Vue;
+import vue.sprite.Sprite;
 
 public class Manager implements Runnable{
 	
@@ -16,6 +23,10 @@ public class Manager implements Runnable{
 	private Manager() {
 		affichage = new Thread(this);
 		entities = new Vector<>();
+		
+		
+		key = new KeyboardTechnique();
+		mouse = new MouseTechnique();
 	}
 	
 	public static Manager getInstance() {
@@ -28,20 +39,40 @@ public class Manager implements Runnable{
 	
 	public void setVue(Vue v) {
 		this.vue = v;
+		vue.addKey(key);
+		vue.addMouse(mouse, mouse);
+		map = new Carte(vue.getFrameWidth(),vue.getFrameHeight());
 	}
 	//--------------AFFICHAGE----------
 	@Override
 	public void run() {
 		while(true) {
+			List<EntityTechnique> removedEntities = new Vector<>();
+			
 			//clear l'ecran
-			vue.clear();
+			//vue.clear();
 			
 			//render Map here ! 
+			drawMap();
 			
 			
+			//TEST :
+			if(mouse.getMouse().buttonClicked(1)) addEntity(new Bombe(mouse.getMouse().getMouseX(), mouse.getMouse().getMouseY(), map));
+			
+			//AFFICHAGE
 			for (EntityTechnique e : entities) {
-				drawEntity(e.getX(), e.getY(), e.hashCode());
+				vue.drawEntity(e.getX(), e.getY(),choixSprite(e.getType()), e.getFlip());
+				if(e.needRemove()) removedEntities.add(e);
 			}
+			//REMOVE
+			for (EntityTechnique e : removedEntities) {
+				entities.remove(e);
+			}
+			
+			vue.drawCursor(mouse.getMouse().getMouseX(), mouse.getMouse().getMouseY());
+			
+			mouse.update();
+			key.update();
 			
 			vue.render(); // affichage sur la fenetre
 		}
@@ -49,17 +80,59 @@ public class Manager implements Runnable{
 	
 	//----------------JEU--------------
 	private List<EntityTechnique> entities;
+	private Carte map;
 	private Thread affichage;
 	
+	private KeyboardTechnique key;
+	private MouseTechnique mouse;
+	
 	public synchronized void startGame() {
-		entities.add(new EntityTechnique(new Bombe(150,150)));
-		entities.add(new EntityTechnique(new Bombe(200,120)));
+		addEntity(new Joueur(150,150,map,key.getKey()));
+		addEntity(new Bombe(200,200, map));
+		for(int i = 0 ; i < 100 ; i++) {
+			addEntity(new Particule(750,500,map));
+		}
+		
+		
 		affichage.start();
 	}
 	
-
-	public void drawEntity(int x, int y, int s) {
-		vue.drawEntity(x,y,s);
+	private void drawMap() {
+		int w = map.getWidth();
+		int h = map.getHeight();
+		int size = map.getTileSize();
+		
+		for(int y = 0 ; y < h ; y++) {
+			int yp = y * size;
+			
+			for(int x = 0 ; x < w ; x++) {
+				int xp = x * size;
+				
+				vue.drawTiles(xp,yp,size,map.getTilesAt(x, y));
+			}
+		}
+	}
+	
+	public void addEntity(Entity e) {
+		entities.add(new EntityTechnique(e));
+	}
+	
+	private Sprite choixSprite(int type) {
+		Sprite retour = null;
+		switch(type) {
+		case 1 :
+			retour = Sprite.player;
+			break;
+		case 3 :
+			retour = Sprite.particule;
+			break;
+		case 4 :
+			retour = Sprite.bombe;
+			break;
+		default :
+			retour = Sprite.snake;
+		}
+		return retour;
 		
 	}
 

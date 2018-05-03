@@ -10,6 +10,11 @@ import modele.metier.input.Mouse;
 public class MouseTechnique implements MouseListener , MouseMotionListener{
 	
 	private Mouse mouse;
+	
+	
+	public MouseTechnique() {
+		mouse = new Mouse();
+	}
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
@@ -50,6 +55,22 @@ public class MouseTechnique implements MouseListener , MouseMotionListener{
 	public void mouseReleased(MouseEvent arg0) {
 		mouse.bouttonReleased(arg0.getButton());
 		
+	}
+	
+	public Mouse getMouse() {
+		return mouse;
+	}
+	
+	public void update() {
+		mouse.update();
+	}
+	
+	public int getX() {
+		return mouse.getMouseX();
+	}
+	
+	public int getY() {
+		return mouse.getMouseY();
 	}
 
 }

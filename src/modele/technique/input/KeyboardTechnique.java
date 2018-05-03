@@ -1,5 +1,6 @@
 package modele.technique.input;
 
+import java.awt.RenderingHints.Key;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -8,6 +9,10 @@ import modele.metier.input.Keyboard;
 public class KeyboardTechnique implements KeyListener {
 	
 	private Keyboard key;
+	
+	public KeyboardTechnique() {
+		key = new Keyboard();
+	}
 	
 	//Get des booleans
 	
@@ -41,6 +46,14 @@ public class KeyboardTechnique implements KeyListener {
 	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public Keyboard getKey() {
+		return key;
+	}
+	
+	public void update() {
+		key.update();
 	}
 
 }
