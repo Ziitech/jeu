@@ -7,8 +7,6 @@ public class Screen {
 	private int width, height;
 	private int[] pixels;
 	
-	private int bgColor;
-	
 	public Screen (int width, int height) {
 		this.setWidth(width);
 		this.setHeight(height);
