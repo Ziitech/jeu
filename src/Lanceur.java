@@ -1,9 +1,10 @@
-package vue;
+
 
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 
 import controleur.Manager;
+import vue.Cadre;
 
 public class Lanceur {
 
