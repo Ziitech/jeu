@@ -1,5 +1,10 @@
 package vue.sprite;
 
+/**
+ * Image represente sous forme de tableau de pixels
+ * @author Nandaleio
+ *
+ */
 public class Sprite {
 
 	

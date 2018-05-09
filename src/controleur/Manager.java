@@ -1,5 +1,6 @@
 package controleur;
 
+import java.awt.event.KeyEvent;
 import java.util.List;
 import java.util.Vector;
 
@@ -38,27 +39,31 @@ public class Manager implements Runnable{
 	private Vue vue;
 	
 	public void setVue(Vue v) {
+		System.out.println("Vue initialise");
 		this.vue = v;
 		vue.addKey(key);
 		vue.addMouse(mouse, mouse);
 		map = new Carte(vue.getFrameWidth(),vue.getFrameHeight());
 	}
 	//--------------AFFICHAGE----------
+	
+	/**
+	 * affiche en boucle les elements du jeu (carte + entites)
+	 */
 	@Override
 	public void run() {
 		while(true) {
 			List<EntityTechnique> removedEntities = new Vector<>();
 			
 			//clear l'ecran
-			//vue.clear();
+			//vue.clear();	//inutile
 			
 			//render Map here ! 
 			drawMap();
 			
-			
 			//TEST :
 			if(mouse.getMouse().buttonClicked(1)) addEntity(new Bombe(mouse.getMouse().getMouseX(), mouse.getMouse().getMouseY(), map));
-			
+			if(key.getKey().isKeyDown(KeyEvent.VK_G)) map.generate();
 			//AFFICHAGE
 			for (EntityTechnique e : entities) {
 				vue.drawEntity(e.getX(), e.getY(),choixSprite(e.getType()), e.getFlip());
@@ -81,16 +86,21 @@ public class Manager implements Runnable{
 	//----------------JEU--------------
 	private List<EntityTechnique> entities;
 	private Carte map;
+	
+	/**
+	 * 
+	 */
 	private Thread affichage;
 	
 	private KeyboardTechnique key;
 	private MouseTechnique mouse;
 	
 	public synchronized void startGame() {
+		System.out.println("Starting new Game !");
 		addEntity(new Joueur(150,150,map,key.getKey()));
 		addEntity(new Bombe(200,200, map));
-		for(int i = 0 ; i < 100 ; i++) {
-			addEntity(new Particule(750,500,map));
+		for(int i = 0 ; i < 10 ; i++) {
+			addEntity(new Particule(750,500));
 		}
 		
 		

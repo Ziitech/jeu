@@ -2,13 +2,31 @@ package modele.technique.entities;
 
 import modele.metier.entities.Entity;
 
+/**
+ * Entite Technique permet de rendre chaque entite independant 
+ * @author Nandaleio
+ *
+ */
 public class EntityTechnique implements Runnable{
 	
+	/**
+	 * l'entite a faire vivre
+	 */
 	private Entity e;
+	/**
+	 * le moteur qui fais vivre l'entite
+	 */
 	private Thread thread;
 	
+	/**
+	 * si il faut supprimer cette entite technique
+	 */
 	private boolean needRemove;
 
+	/**
+	 * demarre la vie d'une entite
+	 * @param e l'entite a faire vivre
+	 */
 	public EntityTechnique(Entity e) {
 		this.e = e;
 		this.needRemove = false;

@@ -1,11 +1,14 @@
 package modele.technique.input;
 
-import java.awt.RenderingHints.Key;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import modele.metier.input.Keyboard;
-
+/**
+ * Clavier cote tachnique implements KeyListener pour compatibilité avec Swing
+ * @author Nandaleio
+ *
+ */
 public class KeyboardTechnique implements KeyListener {
 	
 	private Keyboard key;

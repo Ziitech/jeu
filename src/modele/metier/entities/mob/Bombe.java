@@ -4,8 +4,19 @@ import java.util.Random;
 
 import modele.metier.Carte;
 
+
+/**
+ * elements qui explose des qu'il touche une tuile solid de la carte
+ */
+
 public class Bombe extends Mob {
 
+	/**
+	 *  
+	 * @param x position en X
+	 * @param y position en Y
+	 * @param map carte sur laquelle doit etre situé la bombe
+	 */
 	public Bombe(int x, int y, Carte map) {
 		super(map);
 		this.x = x;
@@ -13,7 +24,7 @@ public class Bombe extends Mob {
 		
 		Random rand = new Random();
 		
-		vitesseX = (rand.nextFloat()-0.5f) *5;
+		vitesseX = 0; // tombe verticalement
 		vitesseY = (rand.nextFloat()-0.5f) *5;
 		
 		type = 4;

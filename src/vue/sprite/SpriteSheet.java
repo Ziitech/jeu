@@ -5,6 +5,11 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+/**
+ * image contenant les Sprites
+ * @author Nandaleio
+ *
+ */
 public class SpriteSheet {
 	
 	public static SpriteSheet sheet1 = new SpriteSheet("/Player.png", 512);

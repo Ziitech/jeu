@@ -2,14 +2,20 @@ package modele.metier.entities.mob;
 
 import java.util.Random;
 
-import modele.metier.Carte;
-
+/**
+ * Entite mobile purement esthetique 
+ * @author Nandaleio
+ *
+ */
 public class Particule extends Mob {
 	
+	/**
+	 * nombre de cycle avant qu'elle ne soit retire
+	 */
 	private int tempsVie;
 	
-	public Particule(int x, int y, Carte map) {
-		super(map);
+	public Particule(int x, int y) {
+		super(null);
 		
 		Random rand = new Random();
 		this.x = x;
