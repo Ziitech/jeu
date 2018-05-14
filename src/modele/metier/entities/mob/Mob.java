@@ -75,4 +75,8 @@ public abstract class Mob extends Entity {
 		this.y += vitesseY;
 	}
 	
+	protected boolean collision() {
+		return map.getSolidTileAt((int)(x+vitesseX),(int) (y+vitesseY));
+	}
+	
 }

@@ -1,5 +1,8 @@
 package modele.technique.entities;
 
+import java.util.List;
+import java.util.Vector;
+
 import modele.metier.entities.Entity;
 
 /**
@@ -37,12 +40,13 @@ public class EntityTechnique implements Runnable{
 	@Override
 	public void run() {
 		while(!e.isRemoved()) {
-				e.update();
-				try {
-					Thread.sleep(17); // Pour les 60 update/sec
-				} catch (InterruptedException e1) {
-					e1.printStackTrace();
-				}
+			//update
+			e.update();
+			try {
+				Thread.sleep(17); // Pour les 60 update/sec
+			} catch (InterruptedException e1) {
+				e1.printStackTrace();
+			}
 		}
 		try {
 			needRemove = true;

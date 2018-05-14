@@ -9,6 +9,7 @@ import modele.metier.entities.Entity;
 import modele.metier.entities.mob.Bombe;
 import modele.metier.entities.mob.Joueur;
 import modele.metier.entities.mob.Particule;
+import modele.metier.entities.mob.TestPhysique;
 import modele.technique.entities.EntityTechnique;
 import modele.technique.input.KeyboardTechnique;
 import modele.technique.input.MouseTechnique;
@@ -63,6 +64,7 @@ public class Manager implements Runnable{
 			
 			//TEST :
 			if(mouse.getMouse().buttonClicked(1)) addEntity(new Bombe(mouse.getMouse().getMouseX(), mouse.getMouse().getMouseY(), map));
+			if(mouse.getMouse().buttonClicked(3)) addEntity(new TestPhysique(mouse.getMouse().getMouseX(),mouse.getMouse().getMouseY(),map));
 			if(key.getKey().isKeyDown(KeyEvent.VK_G)) map.generate();
 			//AFFICHAGE
 			for (EntityTechnique e : entities) {

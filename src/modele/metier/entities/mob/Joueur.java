@@ -31,7 +31,8 @@ public class Joueur extends Mob {
 
 	@Override
 	public void update() {
-		vitesseX = vitesseY =0;
+		vitesseX *= 0.5;
+		vitesseY *= 0.5;
 		//fall();
 		
 		if(key.isKey(KeyEvent.VK_S)) accelere(0f  , 5.5f);
@@ -39,7 +40,7 @@ public class Joueur extends Mob {
 		if(key.isKey(KeyEvent.VK_Q)) accelere(-5.5f, 0);
 		if(key.isKey(KeyEvent.VK_D)) accelere(5.5f, 0);
 		
-		if(!map.getSolidTileAt(x, y)) {
+		if(!collision()) {
 			move();
 		}
 		
