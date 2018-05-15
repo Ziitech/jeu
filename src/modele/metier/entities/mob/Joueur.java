@@ -20,8 +20,6 @@ public class Joueur extends Mob {
 	 */
 	private Keyboard key;
 	
-	private boolean saute;
-	
 	public Joueur(int x, int y,Carte map, Keyboard k) {
 		super(map);
 		this.x = x;
@@ -37,15 +35,14 @@ public class Joueur extends Mob {
 		vitesseY *= 0.5;
 		fall();
 		
-		if(key.isKey(KeyEvent.VK_Z) && !saute) saute();
+		if(key.isKey(KeyEvent.VK_Z)) {
+			saute();
+		}
 		if(key.isKey(KeyEvent.VK_Q)) accelere(-4.5f, 0);
 		if(key.isKey(KeyEvent.VK_D)) accelere(4.5f, 0);
 		
 		if(!collision()) {
 			move();
-		}
-		else {
-			saute = false;
 		}
 		
 		

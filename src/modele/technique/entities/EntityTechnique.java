@@ -1,8 +1,5 @@
 package modele.technique.entities;
 
-import java.util.List;
-import java.util.Vector;
-
 import controleur.Manager;
 import modele.metier.entities.Entity;
 
