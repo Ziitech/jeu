@@ -16,7 +16,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import controleur.Manager;
-import menu.Accueil;
+import vue.menu.Accueil;
 import vue.sprite.Sprite;
 
 public class CadreGeneral extends JFrame implements Vue{
