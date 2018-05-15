@@ -66,6 +66,11 @@ public class Manager implements Runnable{
 			if(mouse.getMouse().buttonClicked(1)) addEntity(new Bombe(mouse.getMouse().getMouseX(), mouse.getMouse().getMouseY(), map));
 			if(mouse.getMouse().buttonClicked(3)) addEntity(new TestPhysique(mouse.getMouse().getMouseX(),mouse.getMouse().getMouseY(),map));
 			if(key.getKey().isKeyDown(KeyEvent.VK_G)) map.generate();
+			if(key.getKey().isKeyDown(KeyEvent.VK_P)) {
+				pause = !pause;
+			}
+			
+			
 			//AFFICHAGE
 			for (EntityTechnique e : entities) {
 				vue.drawEntity(e.getX(), e.getY(),choixSprite(e.getType()), e.getFlip());
@@ -94,6 +99,8 @@ public class Manager implements Runnable{
 	 */
 	private Thread affichage;
 	
+	private boolean pause;
+	
 	private KeyboardTechnique key;
 	private MouseTechnique mouse;
 	
@@ -104,6 +111,8 @@ public class Manager implements Runnable{
 		for(int i = 0 ; i < 10 ; i++) {
 			addEntity(new Particule(750,500));
 		}
+		
+		pause = false;
 		
 		
 		affichage.start();
@@ -148,7 +157,9 @@ public class Manager implements Runnable{
 		
 	}
 
-	
+	public boolean isPause() {
+		return pause;
+	}
 
 	
 	
