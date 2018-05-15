@@ -108,10 +108,9 @@ public class Manager implements Runnable{
 		System.out.println("Starting new Game !");
 		addEntity(new Joueur(150,150,map,key.getKey()));
 		addEntity(new Bombe(200,200, map));
-		for(int i = 0 ; i < 10 ; i++) {
+		for(int i = 0 ; i < 10 ; i++) { // up to 10 ok
 			addEntity(new Particule(750,500));
 		}
-		
 		pause = false;
 		
 		

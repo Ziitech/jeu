@@ -52,7 +52,7 @@ public abstract class Mob extends Entity {
 	 * fait tomber l'entite
 	 */
 	protected void fall() {
-		vitesseY += 0.5f;
+		vitesseY += 5.5f;
 	}
 	
 	/**
@@ -73,6 +73,10 @@ public abstract class Mob extends Entity {
 		if(vitesseX < 0) flip = true;
 		this.x += vitesseX;
 		this.y += vitesseY;
+	}
+	
+	protected void saute() {
+		vitesseY -= 15f;
 	}
 	
 	protected boolean collision() {
