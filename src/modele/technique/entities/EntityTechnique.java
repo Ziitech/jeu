@@ -1,5 +1,6 @@
 package modele.technique.entities;
 
+import controleur.Manager;
 import modele.metier.entities.Entity;
 
 /**
@@ -36,20 +37,24 @@ public class EntityTechnique implements Runnable{
 
 	@Override
 	public void run() {
-		while(!e.isRemoved()) {
-				e.update();
+			while(!e.isRemoved()) {
 				try {
 					Thread.sleep(17); // Pour les 60 update/sec
 				} catch (InterruptedException e1) {
 					e1.printStackTrace();
 				}
-		}
-		try {
-			needRemove = true;
-			thread.join();
-		} catch (InterruptedException e1) {
-			e1.printStackTrace();
-		}
+				
+				if(Manager.getInstance().isPause()) continue;
+				
+				//update
+				e.update();
+			}
+			try {
+				needRemove = true;
+				thread.join();
+			} catch (InterruptedException e1) {
+				e1.printStackTrace();
+			}
 	}
 	
 	public int getX() {

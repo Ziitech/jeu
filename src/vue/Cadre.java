@@ -104,6 +104,7 @@ public class Cadre extends JFrame implements Vue {
 	 */
 	@Override
 	public void drawEntity(int x, int y,Sprite s, boolean flip) {
+		screen.drawPixel(x, y, 0xffff0000);
 		screen.renderMob(x, y, s, flip);
 	}
 

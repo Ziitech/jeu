@@ -112,21 +112,28 @@ public class Screen {
 	
 	
 	public void renderMob(int xp, int yp, Sprite sprite, boolean flip) {
-
-		for(int y = 0 ; y < sprite.getHeight() ; y++) {
+		//Decallage de moitier sur Y
+		int spriteHeight = sprite.getHeight()/2;
+		for(int y = -spriteHeight ; y < spriteHeight ; y++) {
+			int ySprite = y + spriteHeight;
+			
 			int ya = y + yp;
 			
-			for(int x = 0 ; x < sprite.getWidth()  ; x++) {
-			int xa = x + xp;
+			// Decallage de moitier sur X
+			int spriteWidth = sprite.getWidth()/2;
+			for(int x = -spriteWidth ; x < spriteWidth  ; x++) {
+				int xSprite = x + spriteWidth;
+				
+				int xa = x + xp;
 			
-			int xs = (sprite.getWidth()-1)-x;
+				int xs = (sprite.getWidth()-1)-xSprite;
 			
 				if(xa < -sprite.SIZE || xa >= width ||ya <0|| ya >= height) break;
 				if (xa < 0) xa = 0;
 				
 				int col;
-				if(flip) col = sprite.pixels[xs+y*sprite.getWidth()];
-				else col = sprite.pixels[x+y*sprite.getWidth()];
+				if(flip) col = sprite.pixels[xs+ySprite*sprite.getWidth()];
+				else col = sprite.pixels[xSprite+ySprite*sprite.getWidth()];
 				if(col != 0xffff00ff) pixels[xa+ya*width] = col;
 			}
 		}

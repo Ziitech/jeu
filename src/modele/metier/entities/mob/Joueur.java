@@ -3,6 +3,7 @@ package modele.metier.entities.mob;
 import java.awt.event.KeyEvent;
 
 import modele.metier.Carte;
+import modele.metier.Constantes;
 import modele.metier.input.Keyboard;
 
 /**
@@ -19,6 +20,8 @@ public class Joueur extends Mob {
 	 * clavier qui controle le joueur
 	 */
 	private Keyboard key;
+	//private int vie;
+	private float vitesse;
 	
 	public Joueur(int x, int y,Carte map, Keyboard k) {
 		super(map);
@@ -27,19 +30,23 @@ public class Joueur extends Mob {
 		key = k;
 		
 		type = 1;
+		vie = 100;
+		vitesse = Constantes.getConstantes().getVitesse();
 	}
 
 	@Override
 	public void update() {
-		vitesseX = vitesseY =0;
-		//fall();
+		vitesseX *= 0.5;
+		vitesseY *= 0.5;
+		fall();
 		
-		if(key.isKey(KeyEvent.VK_S)) accelere(0f  , 5.5f);
-		if(key.isKey(KeyEvent.VK_Z)) accelere(0f  , -5.5f);
-		if(key.isKey(KeyEvent.VK_Q)) accelere(-5.5f, 0);
-		if(key.isKey(KeyEvent.VK_D)) accelere(5.5f, 0);
+		if(key.isKey(KeyEvent.VK_Z)) {
+			saute();
+		}
+		if(key.isKey(KeyEvent.VK_Q)) accelere(-vitesse, 0);
+		if(key.isKey(KeyEvent.VK_D)) accelere(vitesse, 0);
 		
-		if(!map.getSolidTileAt(x, y)) {
+		if(!collision()) {
 			move();
 		}
 		

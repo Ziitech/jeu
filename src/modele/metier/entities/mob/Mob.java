@@ -26,6 +26,9 @@ public abstract class Mob extends Entity {
 	 * Vitesse sur l'axe Y
 	 */
 	protected float vitesseY;
+	
+	
+	protected boolean saute;
 
 	/**
 	 * 
@@ -40,19 +43,22 @@ public abstract class Mob extends Entity {
 	 * verifie si l'entite est bien sur la carte
 	 */
 	public void checkInBound() {
-		if(x < 0 || x > (map.getWidth()*map.getTileSize()))  {
-			remove();
-		}
 		if(y < 0 || y > (map.getHeight()*map.getTileSize())) {
 			remove();
+			return;
 		}
+		if(x < 0 || x > (map.getWidth()*map.getTileSize()))  {
+			remove();
+			
+		}
+		
 	}
 	
 	/**
 	 * fait tomber l'entite
 	 */
 	protected void fall() {
-		vitesseY += 0.5f;
+		vitesseY += 5.5f;
 	}
 	
 	/**
@@ -69,10 +75,24 @@ public abstract class Mob extends Entity {
 	 * applique la vitesse de l'entite sur sa position
 	 */
 	protected void move() {
+		checkInBound();
 		if(vitesseX > 0) flip = false;
 		if(vitesseX < 0) flip = true;
 		this.x += vitesseX;
 		this.y += vitesseY;
+	}
+	
+	protected void saute() {
+		if(!saute) vitesseY -= 80f;
+		saute = true;
+	}
+	
+	
+	
+	protected boolean collision() {
+		boolean retour = map.getSolidTileAt((int)(x+vitesseX),(int) (y+vitesseY));
+		if(retour) saute = false;
+		return retour;
 	}
 	
 }

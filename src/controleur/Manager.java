@@ -9,6 +9,7 @@ import modele.metier.entities.Entity;
 import modele.metier.entities.mob.Bombe;
 import modele.metier.entities.mob.Joueur;
 import modele.metier.entities.mob.Particule;
+import modele.technique.ConstantesTechnique;
 import modele.technique.entities.EntityTechnique;
 import modele.technique.input.KeyboardTechnique;
 import modele.technique.input.MouseTechnique;
@@ -28,6 +29,8 @@ public class Manager implements Runnable{
 		
 		key = new KeyboardTechnique();
 		mouse = new MouseTechnique();
+		
+		constantes = new ConstantesTechnique();
 	}
 	
 	public static Manager getInstance() {
@@ -64,6 +67,9 @@ public class Manager implements Runnable{
 			//TEST :
 			if(mouse.getMouse().buttonClicked(1)) addEntity(new Bombe(mouse.getMouse().getMouseX(), mouse.getMouse().getMouseY(), map));
 			if(key.getKey().isKeyDown(KeyEvent.VK_G)) map.generate();
+			if(key.getKey().isKeyDown(KeyEvent.VK_P)) pause = !pause;
+			
+			
 			//AFFICHAGE
 			for (EntityTechnique e : entities) {
 				vue.drawEntity(e.getX(), e.getY(),choixSprite(e.getType()), e.getFlip());
@@ -92,16 +98,21 @@ public class Manager implements Runnable{
 	 */
 	private Thread affichage;
 	
+	private boolean pause;
+	
+	private ConstantesTechnique constantes;
 	private KeyboardTechnique key;
 	private MouseTechnique mouse;
 	
 	public synchronized void startGame() {
 		System.out.println("Starting new Game !");
+		constantes.readFile("chemin du fichier !!!");
 		addEntity(new Joueur(150,150,map,key.getKey()));
 		addEntity(new Bombe(200,200, map));
-		for(int i = 0 ; i < 10 ; i++) {
+		for(int i = 0 ; i < 10 ; i++) { // up to 10 ok
 			addEntity(new Particule(750,500));
 		}
+		pause = false;
 		
 		
 		affichage.start();
@@ -146,7 +157,9 @@ public class Manager implements Runnable{
 		
 	}
 
-	
+	public boolean isPause() {
+		return pause;
+	}
 
 	
 	
