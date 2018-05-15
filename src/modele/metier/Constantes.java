@@ -13,17 +13,37 @@ public class Constantes {
 	private boolean dropColis;
 	
 	private Constantes() {
-		readFile();
 	}
 	
-	/**
-	 * lis le fichier de configuration et applique les valeurs
-	 */
-	private void readFile() {
-		
+	private static Constantes constantes = new Constantes();
+
+	public float getGravite() {
+		return gravite;
 	}
-	
-	private static Constantes constantes = new Constantes(); 
+
+	public void setGravite(float gravite) {
+		this.gravite = gravite;
+	}
+
+	public float getVitesse() {
+		return vitesse;
+	}
+
+	public void setVitesse(float vitesse) {
+		this.vitesse = vitesse;
+	}
+
+	public boolean isDropColis() {
+		return dropColis;
+	}
+
+	public void setDropColis(boolean dropColis) {
+		this.dropColis = dropColis;
+	}
+
+	public static Constantes getConstantes() {
+		return constantes;
+	} 
 	
 
 }
