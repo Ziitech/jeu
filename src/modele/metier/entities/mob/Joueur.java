@@ -20,7 +20,7 @@ public class Joueur extends Mob {
 	 * clavier qui controle le joueur
 	 */
 	private Keyboard key;
-	//private int vie;
+	private int vie;
 	private float vitesse;
 	
 	public Joueur(int x, int y,Carte map, Keyboard k) {

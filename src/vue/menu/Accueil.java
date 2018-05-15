@@ -40,20 +40,20 @@ public class Accueil extends JPanel{
 		imagedefond = Toolkit.getDefaultToolkit().getImage("image/nkkiae_8y.jpg");
 		ImageIcon icon = null;
 		try {
-			icon = new ImageIcon(ImageIO.read(new File("image/logoSnail.png")));
+			icon = new ImageIcon(ImageIO.read(new File("image/Burn-Snail-icon.png")));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		JLabel texte = new JLabel("SnailGame");
+		JLabel texte = new JLabel("SnailGame",icon,10);
 		texte.setForeground(Color.WHITE);
 		texte.setOpaque(false);
 		texte.setFocusable(false); // On n'affiche pas l'effet de focus.
 		texte.setHorizontalAlignment(SwingConstants.CENTER);
 		texte.setHorizontalTextPosition(SwingConstants.CENTER);
 		texte.setFont(new Font("Serif", Font.PLAIN, 36));
-		this.setLayout(new GridLayout(5,1));
-		add(new JLabel(icon));
+		this.setLayout(new GridLayout(4,1));
+		//add(new JLabel(icon));
 		add(texte);
 		add(jouer);
 		add(parametre);
