@@ -38,8 +38,8 @@ public class Joueur extends Mob {
 		fall();
 		
 		if(key.isKey(KeyEvent.VK_Z) && !saute) saute();
-		if(key.isKey(KeyEvent.VK_Q)) accelere(-5.5f, 0);
-		if(key.isKey(KeyEvent.VK_D)) accelere(5.5f, 0);
+		if(key.isKey(KeyEvent.VK_Q)) accelere(-4.5f, 0);
+		if(key.isKey(KeyEvent.VK_D)) accelere(4.5f, 0);
 		
 		if(!collision()) {
 			move();
