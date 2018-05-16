@@ -1,5 +1,6 @@
 package vue;
 
+import java.awt.Component;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.KeyListener;
@@ -36,7 +37,7 @@ public class CadreGeneral extends JFrame implements Vue{
 		}
 		JLabel contentPane = new JLabel(icon);
 		//this.setContentPane(contentPane);
-		this.add(accueil);
+		//this.add(accueil);
 		this.setIconImage(icone);
 		this.setTitle("JEU");
 		this.setExtendedState(MAXIMIZED_BOTH);

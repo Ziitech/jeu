@@ -1,69 +1,77 @@
 package vue.menu;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.GridLayout;
-import java.awt.Image;
-import java.awt.Toolkit;
-import java.io.File;
-import java.io.IOException;
+import javax.swing.JFrame;
 
-import javax.imageio.ImageIO;
-import javax.swing.AbstractButton;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.SwingConstants;
-
+import javafx.animation.FadeTransition;
+import javafx.animation.TranslateTransition;
+import javafx.application.Application;
+import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.GaussianBlur;
+import javafx.scene.effect.Glow;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import javafx.util.Duration;
+import vue.menu.action.JouerAction;
 import vue.menu.bouton.BoutonJouer;
-import vue.menu.bouton.BoutonParametre;
-import vue.menu.bouton.BoutonQuitter;
+import javafx.scene.input.KeyCode;
+
+public class Accueil extends Application {
+
+    private GameMenu gameMenu;
+    Stage primaryStage;
+    GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+	int w = gd.getDisplayMode().getWidth();
+	int h = gd.getDisplayMode().getHeight();
+    
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+
+        Pane root = new Pane();
+        
+        this.primaryStage = primaryStage;
+        root.setMinSize(w-10, h-10);
+        InputStream is = Files.newInputStream(Paths.get("image/nkkiae_8y.jpg"));
+        Image img = new Image(is);
+        is.close();
+
+        ImageView imgView = new ImageView(img);
+        imgView.setFitWidth(w);
+        imgView.setFitHeight(h);
+
+        gameMenu = new GameMenu(primaryStage,w,h);
+        gameMenu.setVisible(false);
+
+        root.getChildren().addAll(imgView, gameMenu);
+
+        Scene scene = new Scene(root);
+        gameMenu.setVisible(true);
+        
+        
+        primaryStage.setScene(scene);
+        primaryStage.show();
+        
+        
+    }
 
 
-public class Accueil extends JPanel{
-	
-	private BoutonJouer jouer;
-	private BoutonParametre parametre;
-	private BoutonQuitter quitter;
-	private Image imagedefond = null;
-	
-	public Accueil(){
-		BoutonJouer jouer = new BoutonJouer();
-		BoutonParametre parametre = new BoutonParametre();
-		BoutonQuitter quitter = new BoutonQuitter();
-		
-		imagedefond = Toolkit.getDefaultToolkit().getImage("image/nkkiae_8y.jpg");
-		ImageIcon icon = null;
-		try {
-			icon = new ImageIcon(ImageIO.read(new File("image/Burn-Snail-icon.png")));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		JLabel texte = new JLabel("SnailGame",icon,10);
-		texte.setForeground(Color.WHITE);
-		texte.setOpaque(false);
-		texte.setFocusable(false); // On n'affiche pas l'effet de focus.
-		texte.setHorizontalAlignment(SwingConstants.CENTER);
-		texte.setHorizontalTextPosition(SwingConstants.CENTER);
-		texte.setFont(new Font("Serif", Font.PLAIN, 36));
-		this.setLayout(new GridLayout(4,1));
-		//add(new JLabel(icon));
-		add(texte);
-		add(jouer);
-		add(parametre);
-        add(quitter);
-		
-	}
-	
-	public void paintComponent(Graphics g) {
-		g.drawImage(imagedefond, 0, 0, this);
-	}
-	
+    
 
+    public static void main(String[] args) {
+        launch(args);
+    }
 }
