@@ -8,21 +8,21 @@ import modele.metier.entities.Entity;
  * @author Nandaleio
  *
  */
-public class EntityTechnique implements Runnable{
+public abstract class EntityTechnique implements Runnable{
 	
 	/**
 	 * l'entite a faire vivre
 	 */
-	private Entity e;
+	protected Entity e;
 	/**
 	 * le moteur qui fais vivre l'entite
 	 */
-	private Thread thread;
+	protected Thread thread;
 	
 	/**
 	 * si il faut supprimer cette entite technique
 	 */
-	private boolean needRemove;
+	protected boolean needRemove;
 
 	/**
 	 * demarre la vie d'une entite
@@ -37,25 +37,27 @@ public class EntityTechnique implements Runnable{
 
 	@Override
 	public void run() {
-			while(!e.isRemoved()) {
-				try {
-					Thread.sleep(17); // Pour les 60 update/sec
-				} catch (InterruptedException e1) {
-					e1.printStackTrace();
-				}
-				
-				if(Manager.getInstance().isPause()) continue;
-				
-				//update
-				e.update();
-			}
+		while(!e.isRemoved()) {
 			try {
-				needRemove = true;
-				thread.join();
+				Thread.sleep(17); // Pour les 60 update/sec
 			} catch (InterruptedException e1) {
 				e1.printStackTrace();
 			}
+			
+			if(Manager.getInstance().isPause()) continue;
+			
+			//update
+			update();
+		}
+		try {
+			needRemove = true;
+			thread.join();
+		} catch (InterruptedException e1) {
+			e1.printStackTrace();
+		}
 	}
+	
+	protected abstract void update();
 	
 	public int getX() {
 		return e.getX();

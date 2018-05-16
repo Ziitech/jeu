@@ -16,25 +16,18 @@ import modele.metier.input.Keyboard;
 
 public class Joueur extends Mob {
 	
-	/**
-	 * clavier qui controle le joueur
-	 */
-	private Keyboard key;
-	//private int vie;
+	private int vie;
 	private float vitesse;
 	
-	public Joueur(int x, int y,Carte map, Keyboard k) {
-		super(map);
-		this.x = x;
-		this.y = y;
-		key = k;
+	public Joueur(int x, int y,Carte map ) {
+		super(x,y, map);
 		
 		type = 1;
 		vie = 100;
-		vitesse = Constantes.getConstantes().getVitesse();
+		vitesse = Constantes.getConstantes().getVitesse(); // Possible ???
 	}
 
-	@Override
+	/*@Override
 	public void update() {
 		vitesseX *= 0.5;
 		vitesseY *= 0.5;
@@ -52,7 +45,7 @@ public class Joueur extends Mob {
 		
 		
 		
-	}
+	}*/
 	
 	
 

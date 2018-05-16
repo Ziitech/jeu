@@ -11,6 +11,8 @@ import modele.metier.Carte;
 
 public class Bombe extends Mob {
 
+	private int puissance;
+	
 	/**
 	 *  
 	 * @param x position en X
@@ -18,11 +20,13 @@ public class Bombe extends Mob {
 	 * @param map carte sur laquelle doit etre situé la bombe
 	 */
 	public Bombe(int x, int y, Carte map) {
-		super(map);
+		super(x,y,map);
 		this.x = x;
 		this.y = y;
 		
 		Random rand = new Random();
+		
+		puissance = rand.nextInt(5)+20;
 		
 		vitesseX = 0; // tombe verticalement
 		vitesseY = (rand.nextFloat()-0.5f) *5;
@@ -31,7 +35,12 @@ public class Bombe extends Mob {
 		
 	}
 
-	@Override
+	public void explose() {
+		map.explosion(x, y, puissance);
+		remove();
+	}
+	
+	/*@Override
 	public void update() {
 		if(x < 0 || x >= map.getWidth() * map.getTileSize()) remove();
 		if(y < 0 || y >= map.getHeight() * map.getTileSize()) remove();
@@ -39,13 +48,13 @@ public class Bombe extends Mob {
 		vitesseY += 0.7f;
 		
 		if(map.getSolidTileAt(x, y)) {
-			map.explosion(x, y, 25);
+			
 			remove();
 		}
 		else {
 			y += vitesseY;
 			x += vitesseX;
 		}
-	}
+	}*/
 
 }

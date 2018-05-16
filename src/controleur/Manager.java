@@ -10,7 +10,9 @@ import modele.metier.entities.mob.Bombe;
 import modele.metier.entities.mob.Joueur;
 import modele.metier.entities.mob.Particule;
 import modele.technique.ConstantesTechnique;
+import modele.technique.entities.BombeTechnique;
 import modele.technique.entities.EntityTechnique;
+import modele.technique.entities.JoueurTechnique;
 import modele.technique.input.KeyboardTechnique;
 import modele.technique.input.MouseTechnique;
 import vue.Vue;
@@ -65,7 +67,7 @@ public class Manager implements Runnable{
 			drawMap();
 			
 			//TEST :
-			if(mouse.getMouse().buttonClicked(1)) addEntity(new Bombe(mouse.getMouse().getMouseX(), mouse.getMouse().getMouseY(), map));
+			if(mouse.getMouse().buttonClicked(1)) addBombe(mouse.getX(), mouse.getY());
 			if(key.getKey().isKeyDown(KeyEvent.VK_G)) map.generate();
 			if(key.getKey().isKeyDown(KeyEvent.VK_P)) pause = !pause;
 			
@@ -107,11 +109,9 @@ public class Manager implements Runnable{
 	public synchronized void startGame() {
 		System.out.println("Starting new Game !");
 		constantes.readFile("chemin du fichier !!!");
-		addEntity(new Joueur(150,150,map,key.getKey()));
-		addEntity(new Bombe(200,200, map));
-		for(int i = 0 ; i < 10 ; i++) { // up to 10 ok
-			addEntity(new Particule(750,500));
-		}
+		
+		addJoueur(150, 150);
+		
 		pause = false;
 		
 		
@@ -134,8 +134,12 @@ public class Manager implements Runnable{
 		}
 	}
 	
-	public void addEntity(Entity e) {
-		entities.add(new EntityTechnique(e));
+	public void addJoueur(int x, int y) {
+		entities.add(new JoueurTechnique(x, y, map, key));
+	}
+	
+	public void addBombe(int x, int y) {
+		entities.add(new BombeTechnique(x, y, map));
 	}
 	
 	private Sprite choixSprite(int type) {
