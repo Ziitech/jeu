@@ -61,7 +61,7 @@ public class Manager implements Runnable{
 			List<EntityTechnique> removedEntities = new Vector<>();
 			
 			//clear l'ecran
-			//vue.clear();	//inutile
+			vue.clear();	//inutile ?
 			
 			//render Map here ! 
 			drawMap();

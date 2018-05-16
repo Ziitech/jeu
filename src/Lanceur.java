@@ -1,12 +1,10 @@
 
-
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 
 import controleur.Manager;
-import menu.Accueil;
-import vue.Cadre;
 import vue.CadreGeneral;
+import vue.menu.Accueil;
 
 public class Lanceur {
 
