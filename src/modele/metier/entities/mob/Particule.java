@@ -15,7 +15,7 @@ public class Particule extends Mob {
 	private int tempsVie;
 	
 	public Particule(int x, int y) {
-		super(null);
+		super(x,y,null);
 		
 		Random rand = new Random();
 		this.x = x;
@@ -27,7 +27,7 @@ public class Particule extends Mob {
 		type = 3;
 	}
 
-	@Override
+	/*@Override
 	public void update() {
 		Random rand = new Random();
 		vitesseX += rand.nextFloat()-0.5f;
@@ -36,6 +36,6 @@ public class Particule extends Mob {
 		y += vitesseY*3;
 		tempsVie--;
 		if(tempsVie <= 0) remove();
-	}
+	}*/
 
 }

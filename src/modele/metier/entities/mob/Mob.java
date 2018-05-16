@@ -34,7 +34,8 @@ public abstract class Mob extends Entity {
 	 * 
 	 * @param map carte sur laquelle est l'Entite mobile
 	 */
-	public Mob(Carte map) {
+	public Mob(int x, int y, Carte map) {
+		super(x,y);
 		this.map = map;
 	}
 	
@@ -57,7 +58,9 @@ public abstract class Mob extends Entity {
 	/**
 	 * fait tomber l'entite
 	 */
-	protected void fall() {
+	public void fall() {
+		vitesseX *= 0.5;
+		vitesseY *= 0.5;
 		vitesseY += 5.5f;
 	}
 	
@@ -66,7 +69,7 @@ public abstract class Mob extends Entity {
 	 * @param ax acceleration sur l'axe X
 	 * @param ay acceleration sur l'axe Y
 	 */
-	protected void accelere(float ax, float ay) {
+	public void accelere(float ax, float ay) {
 		this.vitesseX += ax;
 		this.vitesseY += ay;
 	}
@@ -74,7 +77,7 @@ public abstract class Mob extends Entity {
 	/**
 	 * applique la vitesse de l'entite sur sa position
 	 */
-	protected void move() {
+	public void move() {
 		checkInBound();
 		if(vitesseX > 0) flip = false;
 		if(vitesseX < 0) flip = true;
@@ -82,14 +85,14 @@ public abstract class Mob extends Entity {
 		this.y += vitesseY;
 	}
 	
-	protected void saute() {
+	public void saute() {
 		if(!saute) vitesseY -= 80f;
 		saute = true;
 	}
 	
 	
 	
-	protected boolean collision() {
+	public boolean collision() {
 		boolean retour = map.getSolidTileAt((int)(x+vitesseX),(int) (y+vitesseY));
 		if(retour) saute = false;
 		return retour;

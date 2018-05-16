@@ -38,7 +38,9 @@ public abstract class Entity {
 	 * initialise flip et removed a false
 	 * et type a -1 (UNDEFINED)
 	 */
-	public Entity() {
+	public Entity(int x, int y) {
+		this.x = x;
+		this.y = y;
 		flip = false;
 		removed = false;
 		
@@ -60,11 +62,6 @@ public abstract class Entity {
 	public boolean isRemoved() {
 		return removed;
 	}
-	
-	/**
-	 * boucle principale de l'entite 
-	 */
-	public abstract void update();
 	
 	public int getX() { return x;}
 	public int getY() { return y;}

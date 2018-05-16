@@ -7,6 +7,8 @@ public class Screen {
 	private int width, height;
 	private int[] pixels;
 	
+	private int color = 0xff000000;
+	
 	public Screen (int width, int height) {
 		this.setWidth(width);
 		this.setHeight(height);
@@ -16,8 +18,9 @@ public class Screen {
 	
 	public void clear() {
 		for(int i = 0 ; i < pixels.length ; i++) {
-			pixels[i] = 0xff000000;
+			pixels[i] = color;
 		}
+		color++;
 	}
 	
 	public int[] getPixel(){
@@ -98,6 +101,7 @@ public class Screen {
 	}
 	
 	public void drawTile(int xp, int yp, int size, int color) {
+		if(color == 0xff00c1c1) return;
 		for(int y = 0 ; y < size ; y++) {
 			int ya = y + yp;
 			for(int x = 0 ; x < size ; x++) {
