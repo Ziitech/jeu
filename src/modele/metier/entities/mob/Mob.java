@@ -36,6 +36,7 @@ public abstract class Mob extends Entity {
 	 */
 	public Mob(int x, int y, Carte map) {
 		super(x,y);
+		vitesseX = vitesseY = 0;
 		this.map = map;
 	}
 	

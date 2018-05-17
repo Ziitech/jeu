@@ -7,7 +7,6 @@ public class Screen {
 	private int width, height;
 	private int[] pixels;
 	
-	private int color = 0xff000000;
 	
 	public Screen (int width, int height) {
 		this.setWidth(width);
@@ -18,9 +17,8 @@ public class Screen {
 	
 	public void clear() {
 		for(int i = 0 ; i < pixels.length ; i++) {
-			pixels[i] = color;
+			pixels[i] = 0xff000000;
 		}
-		color++;
 	}
 	
 	public int[] getPixel(){
