@@ -108,7 +108,7 @@ public class Manager implements Runnable{
 	
 	public synchronized void startGame() {
 		System.out.println("Starting new Game !");
-		constantes.readFile("chemin du fichier !!!");
+		constantes.readFile("src/prop.properties");
 		
 		addJoueur(150, 150);
 		

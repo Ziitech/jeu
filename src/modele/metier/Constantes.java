@@ -11,7 +11,26 @@ public class Constantes {
 	private float gravite;
 	private float vitesse;
 	private boolean dropColis;
+	private int typePerso;
 	
+	private int typeCarte;
+	
+	public int getTypePerso() {
+		return typePerso;
+	}
+
+	public void setTypePerso(int typePerso) {
+		this.typePerso = typePerso;
+	}
+
+	public int getTypeCarte() {
+		return typeCarte;
+	}
+
+	public void setTypeCarte(int typeCarte) {
+		this.typeCarte = typeCarte;
+	}
+
 	private Constantes() {
 	}
 	

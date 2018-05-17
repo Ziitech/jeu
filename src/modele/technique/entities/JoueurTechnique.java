@@ -24,7 +24,8 @@ public class JoueurTechnique extends EntityTechnique {
 	
 	@Override
 	protected void update() {
-		Mob j = (Mob) e;
+		Joueur j = (Joueur) e;
+		j.controleTrajectoire();
 		j.fall();
 		
 		//if(key.isKeyDown(KeyEvent.VK_SPACE)) //Manager.getInstance().addJoueur(60,60);
@@ -38,7 +39,6 @@ public class JoueurTechnique extends EntityTechnique {
 		if(!j.collision()) {
 			j.move();
 		}
-		
 	}
 
 }

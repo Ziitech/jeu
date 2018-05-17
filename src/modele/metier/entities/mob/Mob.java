@@ -1,6 +1,7 @@
 package modele.metier.entities.mob;
 
 import modele.metier.Carte;
+import modele.metier.Constantes;
 import modele.metier.entities.Entity;
 
 /**
@@ -29,6 +30,8 @@ public abstract class Mob extends Entity {
 	
 	
 	protected boolean saute;
+	
+	private float gravite;
 
 	/**
 	 * 
@@ -38,6 +41,7 @@ public abstract class Mob extends Entity {
 		super(x,y);
 		vitesseX = vitesseY = 0;
 		this.map = map;
+		gravite = Constantes.getConstantes().getGravite();
 	}
 	
 	
@@ -60,9 +64,8 @@ public abstract class Mob extends Entity {
 	 * fait tomber l'entite
 	 */
 	public void fall() {
-		vitesseX *= 0.5;
-		vitesseY *= 0.5;
-		vitesseY += 5.5f;
+		//vitesseX *= 0.5;
+		vitesseY += gravite;
 	}
 	
 	/**
@@ -87,7 +90,7 @@ public abstract class Mob extends Entity {
 	}
 	
 	public void saute() {
-		if(!saute) vitesseY -= 80f;
+		if(!saute) vitesseY -= 60f;
 		saute = true;
 	}
 	

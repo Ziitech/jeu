@@ -26,7 +26,7 @@ public class Bombe extends Mob {
 		
 		Random rand = new Random();
 		
-		puissance = rand.nextInt(5)+20;
+		puissance = rand.nextInt(10)+20;
 		
 		vitesseX = 0; // tombe verticalement
 		vitesseY = (rand.nextFloat()-0.5f) *5;
