@@ -160,6 +160,25 @@ public class GameMenu extends Parent {
              });
          });
         
+        MenuButton btnCommande = new MenuButton("CONTROL");
+        btnCommande.setOnMouseClicked(event -> {
+            getChildren().add(menu2);            
+
+
+             TranslateTransition tt = new TranslateTransition(Duration.seconds(0.25), menu1);
+             tt.setToX(menu1.getTranslateX() - offset);
+
+             TranslateTransition tt1 = new TranslateTransition(Duration.seconds(0.5), menu2);
+             tt1.setToX(menu1.getTranslateX());
+
+             tt.play();
+             tt1.play();
+
+             tt.setOnFinished(evt -> {
+                 getChildren().remove(menu1);
+             });
+         });
+        
         
         MenuButton btnBack1 = new MenuButton("BACK");
         btnBack1.setOnMouseClicked(event -> {
@@ -182,7 +201,7 @@ public class GameMenu extends Parent {
        
         
         menu0.getChildren().addAll(btnResume, btnOptions, btnExit);
-        menu1.getChildren().addAll(btnBack, btnJoueurs, btnVideo);
+        menu1.getChildren().addAll(btnBack, btnJoueurs, btnVideo, btnCommande);
         menu2.getChildren().addAll(btnBack1,radioButton1,radioButton2, radioButton3);
 
         Rectangle bg = new Rectangle(w, h);

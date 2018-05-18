@@ -182,6 +182,5 @@ public class Manager implements Runnable{
 	
 	List<Arme> arme;
 	
-	
 
 }

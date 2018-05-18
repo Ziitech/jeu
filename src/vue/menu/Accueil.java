@@ -26,17 +26,21 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import modele.technique.input.Serveur;
 import vue.menu.action.JouerAction;
 import vue.menu.bouton.BoutonJouer;
 import javafx.scene.input.KeyCode;
 
 public class Accueil extends Application {
 
+	private static Serveur s;
+	
     private GameMenu gameMenu;
     Stage primaryStage;
     GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
 	int w = gd.getDisplayMode().getWidth();
 	int h = gd.getDisplayMode().getHeight();
+
     
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -66,6 +70,9 @@ public class Accueil extends Application {
         primaryStage.show();
         
         
+        // A SUPPRIMER
+        s = new Serveur();
+        s.go();
     }
 
     public static void main(String[] args) {
