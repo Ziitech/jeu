@@ -135,9 +135,7 @@ public abstract class Mob extends Entity {
 	
 	public boolean collision() {
 		boolean retour = map.getSolidTileAt((int)(x+vitesseX),(int) (y+vitesseY));
-		if(retour) {
-			saute = false;
-		}
+		if(retour) saute = false;
 		return retour;
 	}
 	

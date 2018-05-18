@@ -113,9 +113,9 @@ public class Manager implements Runnable{
 		addJoueur(100, 100);
 		
 		Random rand = new Random();
-		for(int i=0; i < 10;i++){
-			addArme(rand.nextInt(vue.getFrameWidth()), 20);
-		}
+		//for(int i=0; i < 10;i++){
+		//	addArme(rand.nextInt(vue.getFrameWidth()), 20);
+		//}
 		pause = false;
 		
 		
@@ -139,7 +139,7 @@ public class Manager implements Runnable{
 	}
 	
 	public void addJoueur(int x, int y) {
-		entities.add(new JoueurTechnique(x, y, map, key));
+		entities.add(new JoueurTechnique(x, y, map, null));
 	}
 	
 	public void addArme(int x, int y) {
