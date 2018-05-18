@@ -1,9 +1,8 @@
 package modele.technique.entities;
 
 import java.awt.event.KeyEvent;
-
+import modele.metier.Action;
 import modele.metier.Carte;
-import modele.metier.Constantes;
 import modele.metier.entities.mob.Joueur;
 import modele.metier.input.Keyboard;
 import modele.technique.input.KeyboardTechnique;
@@ -11,6 +10,7 @@ import modele.technique.input.KeyboardTechnique;
 public class JoueurTechnique extends EntityTechnique {
 	
 	private Keyboard key;
+	private Action action;
 	
 	public JoueurTechnique(int x, int y, Carte map, KeyboardTechnique k) {
 		super(new Joueur(x,y,map));
