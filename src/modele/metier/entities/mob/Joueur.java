@@ -23,10 +23,9 @@ public class Joueur extends Mob {
 	private int vie;
 	private float vitesse;
 	
-	public void controleTrajectoire() {
-		vitesseX *= 0.5f;
-	}
 	
+	
+
 	public Joueur(int x, int y,Carte map) {
 		super(x,y,map);
 		
@@ -35,8 +34,32 @@ public class Joueur extends Mob {
 		vitesse = Constantes.getConstantes().getVitesse();
 		
 		type = Constantes.getConstantes().getTypePerso();
+		
+		//hard coded :
+		width = 30;
+		height = 40;
 	}
 	
+	public void controleTrajectoire() {
+		vitesseX *= 0.5f;
+	}
+	
+	public int getVie() {
+		return vie;
+	}
+
+	public void setVie(int vie) {
+		this.vie = vie;
+	}
+
+	public float getVitesse() {
+		return vitesse;
+	}
+
+	public void setVitesse(float vitesse) {
+		this.vitesse = vitesse;
+	}
+
 	
 	
 

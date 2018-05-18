@@ -13,13 +13,11 @@ import modele.technique.input.KeyboardTechnique;
 public class JoueurTechnique extends EntityTechnique {
 	
 	private Keyboard key;
-	private float vitesse;
 	
 	public JoueurTechnique(int x, int y, Carte map, KeyboardTechnique k) {
 		super(new Joueur(x,y,map));
 		
 		this.key = k.getKey();
-		vitesse = Constantes.getConstantes().getVitesse();
 	}
 	
 	@Override
@@ -33,12 +31,25 @@ public class JoueurTechnique extends EntityTechnique {
 		if(key.isKey(KeyEvent.VK_Z)) {
 			j.saute();
 		}
-		if(key.isKey(KeyEvent.VK_Q)) j.accelere(-vitesse, 0);
-		if(key.isKey(KeyEvent.VK_D)) j.accelere(vitesse, 0);
+		if(key.isKey(KeyEvent.VK_Q)) j.accelere(-j.getVitesse(), 0);
+		if(key.isKey(KeyEvent.VK_D)) j.accelere(j.getVitesse(), 0);
 		
-		if(!j.collision()) {
-			j.move();
+		for(float i = 0 ; i < Math.abs(j.getVitesseX()) ; i++) {
+			if(j.collision(i, 0)) {
+				j.moveX(i);
+				break;
+			}
 		}
+		for(int i = 0 ; i < Math.abs(j.getVitesseY()) ; i++) {
+			if(j.collision(0, i)) {
+				j.moveY(i);
+				break;
+			}
+		}
+		
+		/*if(!j.collision()) {
+			j.move();
+		}*/
 	}
 
 }

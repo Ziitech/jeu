@@ -28,10 +28,15 @@ public abstract class Mob extends Entity {
 	 */
 	protected float vitesseY;
 	
+	private float puissanceSaut;
 	
 	protected boolean saute;
 	
 	private float gravite;
+	
+
+	protected int width;
+	protected int height;
 
 	/**
 	 * 
@@ -42,6 +47,11 @@ public abstract class Mob extends Entity {
 		vitesseX = vitesseY = 0;
 		this.map = map;
 		gravite = Constantes.getConstantes().getGravite();
+		puissanceSaut = Constantes.getConstantes().getSaut();
+		
+		//hard coded :
+		width = 40;
+		height = 40;
 	}
 	
 	
@@ -49,13 +59,13 @@ public abstract class Mob extends Entity {
 	 * verifie si l'entite est bien sur la carte
 	 */
 	public void checkInBound() {
+		
 		if(y < 0 || y > (map.getHeight()*map.getTileSize())) {
 			remove();
 			return;
 		}
 		if(x < 0 || x > (map.getWidth()*map.getTileSize()))  {
 			remove();
-			
 		}
 		
 	}
@@ -89,17 +99,38 @@ public abstract class Mob extends Entity {
 		this.y += vitesseY;
 	}
 	
+	public void moveX(float accX) {
+		this.x += accX;
+	}
+	
+	public void moveY(float accY) {
+		this.y += accY;
+	}
+	
 	public void saute() {
-		if(!saute) vitesseY -= 60f;
+		if(!saute) vitesseY -= puissanceSaut;
 		saute = true;
 	}
 	
-	
+
+	public boolean collision(float ax, float ay) {
+		boolean retour = map.getSolidTileAt((int)(x+ax),(int) (y+ay));
+		if(retour) saute = false;
+		return retour;
+	}
 	
 	public boolean collision() {
 		boolean retour = map.getSolidTileAt((int)(x+vitesseX),(int) (y+vitesseY));
 		if(retour) saute = false;
 		return retour;
+	}
+	
+	public float getVitesseX() {
+		return vitesseX;
+	}
+	
+	public float getVitesseY() {
+		return vitesseY;
 	}
 	
 }

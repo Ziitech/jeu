@@ -47,7 +47,6 @@ public class ConstantesTechnique {
 		 return Integer.parseInt(val);
 	}
 
-
 	private boolean getBoolean(String s) {
 		String val = prop.getProperty(s);
 		return Boolean.parseBoolean(val);

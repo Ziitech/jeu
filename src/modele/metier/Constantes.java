@@ -10,11 +10,55 @@ public class Constantes {
 	
 	private float gravite;
 	private float vitesse;
-	private boolean dropColis;
+	private float saut;
 	private int typePerso;
-	
 	private int typeCarte;
+	private boolean armeCac;
+	private boolean dropColis;
+	private int pourcentageColis;
+	private int nbVie;
+	private int nbManche;
 	
+	public float getSaut() {
+		return saut;
+	}
+
+	public void setSaut(float saut) {
+		this.saut = saut;
+	}
+
+	public boolean isArmeCac() {
+		return armeCac;
+	}
+
+	public void setArmeCac(boolean armeCac) {
+		this.armeCac = armeCac;
+	}
+
+	public int getPourcentageColis() {
+		return pourcentageColis;
+	}
+
+	public void setPourcentageColis(int pourcentageColis) {
+		this.pourcentageColis = pourcentageColis;
+	}
+
+	public int getNbVie() {
+		return nbVie;
+	}
+
+	public void setNbVie(int nbVie) {
+		this.nbVie = nbVie;
+	}
+
+	public int getNbManche() {
+		return nbManche;
+	}
+
+	public void setNbManche(int nbManche) {
+		this.nbManche = nbManche;
+	}
+
 	public int getTypePerso() {
 		return typePerso;
 	}
