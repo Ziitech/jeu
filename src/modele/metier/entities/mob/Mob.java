@@ -1,3 +1,4 @@
+
 package modele.metier.entities.mob;
 
 import modele.metier.Carte;
@@ -140,4 +141,4 @@ public abstract class Mob extends Entity {
 		return vitesseY;
 	}
 }
-
+	
