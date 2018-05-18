@@ -161,7 +161,7 @@ public class GameMenu extends Parent {
          });
         
         MenuButton btnCommande = new MenuButton("CONTROL");
-        btnVideo.setOnMouseClicked(event -> {
+        btnCommande.setOnMouseClicked(event -> {
             getChildren().add(menu2);            
 
 
