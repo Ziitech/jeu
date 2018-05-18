@@ -5,12 +5,11 @@ import java.util.List;
 import java.util.Vector;
 
 import modele.metier.Carte;
-import modele.metier.entities.Entity;
-import modele.metier.entities.mob.Bombe;
-import modele.metier.entities.mob.Joueur;
-import modele.metier.entities.mob.Particule;
+import modele.metier.entities.mob.Arme;
 import modele.technique.ConstantesTechnique;
+import modele.technique.entities.ArmeTechnique;
 import modele.technique.entities.BombeTechnique;
+import modele.technique.entities.TireTechnique;
 import modele.technique.entities.EntityTechnique;
 import modele.technique.entities.JoueurTechnique;
 import modele.technique.input.KeyboardTechnique;
@@ -20,14 +19,15 @@ import vue.sprite.Sprite;
 
 public class Manager implements Runnable{
 	
+	
 	//-----------SINGLETON-------------------------
 	
 	private static Manager instance = new Manager();
 
+	
 	private Manager() {
 		affichage = new Thread(this);
 		entities = new Vector<>();
-		
 		
 		key = new KeyboardTechnique();
 		mouse = new MouseTechnique();
@@ -70,7 +70,9 @@ public class Manager implements Runnable{
 			if(mouse.getMouse().buttonClicked(1)) addBombe(mouse.getX(), mouse.getY());
 			if(key.getKey().isKeyDown(KeyEvent.VK_G)) map.generate();
 			if(key.getKey().isKeyDown(KeyEvent.VK_P)) pause = !pause;
-			
+			if(key.getKey().isKeyDown(KeyEvent.VK_O)){ 
+				addTire(entities.get(0).getX(),entities.get(0).getY());
+			}	
 			
 			//AFFICHAGE
 			for (EntityTechnique e : entities) {
@@ -108,10 +110,12 @@ public class Manager implements Runnable{
 	
 	public synchronized void startGame() {
 		System.out.println("Starting new Game !");
-		constantes.readFile("src/prop.properties");
+		constantes.readFile("chemin du fichier !!!");
 		
-		addJoueur(150, 150);
-		
+		addJoueur(100, 100);
+		for(int i=0; i<(Math.random()*6);i++){
+			addArme((int)(Math.random()*1000), (int)(200+(Math.random()*1000)));
+		}
 		pause = false;
 		
 		
@@ -138,8 +142,16 @@ public class Manager implements Runnable{
 		entities.add(new JoueurTechnique(x, y, map, key));
 	}
 	
+	public void addArme(int x, int y) {
+		entities.add(new ArmeTechnique(x, y, map, key));
+	}
+	
 	public void addBombe(int x, int y) {
 		entities.add(new BombeTechnique(x, y, map));
+	}
+	
+	public void addTire(int x, int y) {
+		entities.add(new TireTechnique(x, y, map));
 	}
 	
 	private Sprite choixSprite(int type) {
@@ -164,7 +176,8 @@ public class Manager implements Runnable{
 	public boolean isPause() {
 		return pause;
 	}
-
+	
+	List<Arme> arme;
 	
 	
 

@@ -1,6 +1,9 @@
 package modele.metier.entities.mob;
 
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
+import java.util.List;
 
 import modele.metier.Carte;
 import modele.metier.Constantes;
@@ -32,7 +35,6 @@ public class Joueur extends Mob {
 		type = 1;
 		vie = 100;
 		vitesse = Constantes.getConstantes().getVitesse();
-		
 		type = Constantes.getConstantes().getTypePerso();
 		
 		//hard coded :
@@ -61,6 +63,5 @@ public class Joueur extends Mob {
 	}
 
 	
-	
-
 }
+	

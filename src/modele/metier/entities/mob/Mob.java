@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package modele.metier.entities.mob;
 
 import modele.metier.Carte;
@@ -112,6 +113,13 @@ public abstract class Mob extends Entity {
 		saute = true;
 	}
 	
+	public boolean recupererArme() {
+		boolean recupArme = false;
+		if((int)(x+vitesseX) >= 400){
+			recupArme = true;
+		}
+		return recupArme;
+	}
 
 	public boolean collision(float ax, float ay) {
 		boolean retour = map.getSolidTileAt((int)(x+ax),(int) (y+ay));
@@ -133,4 +141,4 @@ public abstract class Mob extends Entity {
 		return vitesseY;
 	}
 	
-}
+

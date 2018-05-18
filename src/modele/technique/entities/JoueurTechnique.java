@@ -2,11 +2,9 @@ package modele.technique.entities;
 
 import java.awt.event.KeyEvent;
 
-import controleur.Manager;
 import modele.metier.Carte;
 import modele.metier.Constantes;
 import modele.metier.entities.mob.Joueur;
-import modele.metier.entities.mob.Mob;
 import modele.metier.input.Keyboard;
 import modele.technique.input.KeyboardTechnique;
 
