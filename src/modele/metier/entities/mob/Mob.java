@@ -120,6 +120,12 @@ public abstract class Mob extends Entity {
 		return recupArme;
 	}
 
+	/**
+	 * test
+	 * @param ax
+	 * @param ay
+	 * @return
+	 */
 	public boolean collision(float ax, float ay) {
 		boolean retour = map.getSolidTileAt((int)(x+ax),(int) (y+ay));
 		if(retour) saute = false;
@@ -128,7 +134,9 @@ public abstract class Mob extends Entity {
 	
 	public boolean collision() {
 		boolean retour = map.getSolidTileAt((int)(x+vitesseX),(int) (y+vitesseY));
-		if(retour) saute = false;
+		if(retour) {
+			saute = false;
+		}
 		return retour;
 	}
 	

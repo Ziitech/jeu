@@ -15,13 +15,11 @@ import modele.technique.input.KeyboardTechnique;
 
 public class ArmeTechnique extends EntityTechnique {
 	
-	private Keyboard key;
 	private float vitesse;
 	
-	public ArmeTechnique(int x, int y, Carte map, KeyboardTechnique k) {
+	public ArmeTechnique(int x, int y, Carte map) {
 		super(new Pistolet(x,y,map));
 		
-		this.key = k.getKey();
 		vitesse = Constantes.getConstantes().getVitesse();
 	}
 	

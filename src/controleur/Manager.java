@@ -2,6 +2,7 @@ package controleur;
 
 import java.awt.event.KeyEvent;
 import java.util.List;
+import java.util.Random;
 import java.util.Vector;
 
 import modele.metier.Carte;
@@ -9,9 +10,9 @@ import modele.metier.entities.mob.Arme;
 import modele.technique.ConstantesTechnique;
 import modele.technique.entities.ArmeTechnique;
 import modele.technique.entities.BombeTechnique;
-import modele.technique.entities.TireTechnique;
 import modele.technique.entities.EntityTechnique;
 import modele.technique.entities.JoueurTechnique;
+import modele.technique.entities.TireTechnique;
 import modele.technique.input.KeyboardTechnique;
 import modele.technique.input.MouseTechnique;
 import vue.Vue;
@@ -71,10 +72,6 @@ public class Manager implements Runnable{
 			if(key.getKey().isKeyDown(KeyEvent.VK_G)) map.generate();
 			if(key.getKey().isKeyDown(KeyEvent.VK_P)) pause = !pause;
 			
-			if(key.getKey().isKeyDown(KeyEvent.VK_O)){ 
-				//addTire(entities.get(0).getX(),entities.get(0).getY(), mouse.getX(), mouse.getY());
-			}	
-			
 			//AFFICHAGE
 			for (EntityTechnique e : entities) {
 				vue.drawEntity(e.getX(), e.getY(),choixSprite(e.getType()), e.getFlip());
@@ -114,8 +111,10 @@ public class Manager implements Runnable{
 		constantes.readFile("src/prop.properties");
 		
 		addJoueur(100, 100);
-		for(int i=0; i<(Math.random()*6);i++){
-			addArme((int)(Math.random()*1000), (int)(200+(Math.random()*1000)));
+		
+		Random rand = new Random();
+		for(int i=0; i < 10;i++){
+			addArme(rand.nextInt(vue.getFrameWidth()), 20);
 		}
 		pause = false;
 		
@@ -144,7 +143,7 @@ public class Manager implements Runnable{
 	}
 	
 	public void addArme(int x, int y) {
-		entities.add(new ArmeTechnique(x, y, map, key));
+		entities.add(new ArmeTechnique(x, y, map));
 	}
 	
 	public void addBombe(int x, int y) {

@@ -44,6 +44,7 @@ public class Joueur extends Mob {
 	
 	public void controleTrajectoire() {
 		vitesseX *= 0.5f;
+		//vitesseY *= 0.5f; // test
 	}
 	
 	public int getVie() {
