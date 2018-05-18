@@ -29,6 +29,8 @@ public abstract class Mob extends Entity {
 	
 	
 	protected boolean saute;
+	
+	protected Pistolet p;
 
 	/**
 	 * 
@@ -91,7 +93,19 @@ public abstract class Mob extends Entity {
 		saute = true;
 	}
 	
+	public void avance() {
+		vitesseX *= 0.5;
+		vitesseY *= 0.5;
+		vitesseX += 5.5f;
+	}
 	
+	public boolean recupererArme() {
+		boolean recupArme = false;
+		if((int)(x+vitesseX) >= 400){
+			recupArme = true;
+		}
+		return recupArme;
+	}
 	
 	public boolean collision() {
 		boolean retour = map.getSolidTileAt((int)(x+vitesseX),(int) (y+vitesseY));
