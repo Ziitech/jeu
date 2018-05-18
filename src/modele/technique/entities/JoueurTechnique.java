@@ -1,18 +1,14 @@
 package modele.technique.entities;
 
 import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
 
-import controleur.Manager;
 import modele.metier.Carte;
 import modele.metier.Constantes;
 import modele.metier.entities.mob.Joueur;
-import modele.metier.entities.mob.Mob;
 import modele.metier.input.Keyboard;
 import modele.technique.input.KeyboardTechnique;
 
-public class JoueurTechnique extends EntityTechnique implements MouseMotionListener{
+public class JoueurTechnique extends EntityTechnique {
 	
 	private Keyboard key;
 	private float vitesse;
@@ -26,10 +22,11 @@ public class JoueurTechnique extends EntityTechnique implements MouseMotionListe
 	
 	@Override
 	protected void update() {
-		Mob j = (Mob) e;
+		Joueur j = (Joueur) e;
+		j.controleTrajectoire();
 		j.fall();
 		
-		if(key.isKeyDown(KeyEvent.VK_SPACE)) Manager.getInstance().addJoueur(60,60);
+		//if(key.isKeyDown(KeyEvent.VK_SPACE)) //Manager.getInstance().addJoueur(60,60);
 		
 		if(key.isKey(KeyEvent.VK_Z)) {
 			j.saute();
@@ -40,24 +37,6 @@ public class JoueurTechnique extends EntityTechnique implements MouseMotionListe
 		if(!j.collision()) {
 			j.move();
 		}
-		
-		if(j.recupererArme()) {
-			System.out.println("augment la vitesse"+this.vitesse); 
-		}
-		
-	}
-
-	@Override
-	public void mouseDragged(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseMoved(MouseEvent e) {
-		// TODO Auto-generated method stub
-		System.out.println(e.getX());
-		
 	}
 
 }
