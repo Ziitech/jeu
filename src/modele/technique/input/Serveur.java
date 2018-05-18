@@ -37,7 +37,7 @@ public class Serveur implements Runnable {
 				isr = new InputStreamReader(socket.getInputStream());
 				br = new BufferedReader(isr);
 				message = br.readLine();
-				manette.recuperation(message);
+				//manette.recuperation(message);
 				System.out.println(message);
 			} catch (IOException e) {
 				e.printStackTrace();
