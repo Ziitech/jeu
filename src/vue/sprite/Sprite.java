@@ -13,6 +13,8 @@ public class Sprite {
 	public static Sprite bombe = new Sprite(32, 4, 0, SpriteSheet.sheet1);
 	public static Sprite player = new Sprite(64, 0, 6, SpriteSheet.sheet1);
 	
+	public static Sprite balle = new Sprite(4,0xffc1c1c1);
+	
 	public int[] pixels;
 	protected SpriteSheet sheet;
 	public final int SIZE;

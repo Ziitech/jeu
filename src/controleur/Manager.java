@@ -70,8 +70,9 @@ public class Manager implements Runnable{
 			if(mouse.getMouse().buttonClicked(1)) addBombe(mouse.getX(), mouse.getY());
 			if(key.getKey().isKeyDown(KeyEvent.VK_G)) map.generate();
 			if(key.getKey().isKeyDown(KeyEvent.VK_P)) pause = !pause;
+			
 			if(key.getKey().isKeyDown(KeyEvent.VK_O)){ 
-				addTire(entities.get(0).getX(),entities.get(0).getY());
+				//addTire(entities.get(0).getX(),entities.get(0).getY(), mouse.getX(), mouse.getY());
 			}	
 			
 			//AFFICHAGE
@@ -110,7 +111,7 @@ public class Manager implements Runnable{
 	
 	public synchronized void startGame() {
 		System.out.println("Starting new Game !");
-		constantes.readFile("chemin du fichier !!!");
+		constantes.readFile("src/prop.properties");
 		
 		addJoueur(100, 100);
 		for(int i=0; i<(Math.random()*6);i++){
@@ -151,7 +152,7 @@ public class Manager implements Runnable{
 	}
 	
 	public void addTire(int x, int y) {
-		entities.add(new TireTechnique(x, y, map));
+		entities.add(new TireTechnique(x, y, mouse.getX(), mouse.getY(), map));
 	}
 	
 	private Sprite choixSprite(int type) {
@@ -166,6 +167,9 @@ public class Manager implements Runnable{
 		case 4 :
 			retour = Sprite.bombe;
 			break;
+		case 5:
+			retour = Sprite.balle;
+			break;
 		default :
 			retour = Sprite.snake;
 		}
@@ -178,7 +182,6 @@ public class Manager implements Runnable{
 	}
 	
 	List<Arme> arme;
-	
 	
 
 }

@@ -8,12 +8,15 @@ import java.util.Random;
 import modele.metier.Carte;
 
 public class Tire extends Mob {
-	private int cibleX;
-	private int cibleY;
+	
+	//private int cibleX;
+	//private int cibleY;
 	private int puissance;
 	
+	private int vitesse;
 	
-	public Tire(int x, int y, Carte map) {
+	
+	public Tire(int x, int y, int cibleX, int cibleY, Carte map) {
 		super(x, y, map);
 
 		this.x = x;
@@ -21,12 +24,26 @@ public class Tire extends Mob {
 		
 		Random rand = new Random();
 		
-		puissance = rand.nextInt(5)+20;
+		vitesse = 5;
 		
-		vitesseX = 0; // tombe verticalement
-		vitesseY = (rand.nextFloat()-0.5f) *5;
+		// petit puissance
+		puissance = rand.nextInt(5)+5;
 		
-		type = 3;
+		int differenceX = cibleX - x;
+		int differenceY = cibleY - y;
+		
+		float dirLength=(float) Math.sqrt(differenceX*differenceX + differenceY*differenceY);
+		float dirX = differenceX/dirLength;
+		float dirY = differenceY/dirLength;
+		
+		
+		// donne la direction de la balle
+		//vitesseX += cibleX * vitesse;
+		vitesseX = dirX * vitesse;
+		
+		vitesseY = dirY * vitesse;//= cibleY * vitesse;
+		
+		type = 5;
 	}
 	
 	public void explose() {
