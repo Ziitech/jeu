@@ -32,9 +32,6 @@ import vue.menu.bouton.BoutonJouer;
 import javafx.scene.input.KeyCode;
 
 public class Accueil extends Application {
-
-	private static Serveur s;
-	private static Serveur s2;
 	
     private GameMenu gameMenu;
     Stage primaryStage;
@@ -71,12 +68,8 @@ public class Accueil extends Application {
         primaryStage.show();
         
         
-        // A SUPPRIMER
-        s = new Serveur(6000);
-        s.go();
         
-        //s2 = new Serveur(7000);
-        //s2.go();
+        
     }
 
     public static void main(String[] args) {

@@ -20,6 +20,8 @@ public class Serveur implements Runnable {
 	 
 	 public Serveur(int port) {
 		 
+		 manette = new ManetteTCP();
+		 
 		 try {
 			 th = new Thread(this);
 			 serveur = new ServerSocket(port);
@@ -37,8 +39,8 @@ public class Serveur implements Runnable {
 				isr = new InputStreamReader(socket.getInputStream());
 				br = new BufferedReader(isr);
 				message = br.readLine();
-				//manette.recuperation(message);
-				System.out.println(message);
+				manette.recuperation(message);
+				//System.out.println(message);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -47,5 +49,9 @@ public class Serveur implements Runnable {
 
 	public void go() {
 		th.start();
+	}
+	
+	public ManetteTCP getManette() {
+		return manette;
 	}
 }

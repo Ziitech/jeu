@@ -15,6 +15,7 @@ import modele.technique.entities.JoueurTechnique;
 import modele.technique.entities.TireTechnique;
 import modele.technique.input.KeyboardTechnique;
 import modele.technique.input.MouseTechnique;
+import modele.technique.input.Serveur;
 import vue.Vue;
 import vue.sprite.Sprite;
 
@@ -34,6 +35,8 @@ public class Manager implements Runnable{
 		mouse = new MouseTechnique();
 		
 		constantes = new ConstantesTechnique();
+		serv = new Serveur(6000);
+		serv.go();
 	}
 	
 	public static Manager getInstance() {
@@ -105,6 +108,7 @@ public class Manager implements Runnable{
 	private ConstantesTechnique constantes;
 	private KeyboardTechnique key;
 	private MouseTechnique mouse;
+	private Serveur serv;
 	
 	public synchronized void startGame() {
 		System.out.println("Starting new Game !");
@@ -139,7 +143,7 @@ public class Manager implements Runnable{
 	}
 	
 	public void addJoueur(int x, int y) {
-		entities.add(new JoueurTechnique(x, y, map, null));
+		entities.add(new JoueurTechnique(x, y, map, serv.getManette()));
 	}
 	
 	public void addArme(int x, int y) {
