@@ -18,11 +18,11 @@ public class Serveur implements Runnable {
 	 private Thread th;
 	 private ManetteTCP manette;
 	 
-	 public Serveur() {
+	 public Serveur(int port) {
 		 
 		 try {
 			 th = new Thread(this);
-			 serveur = new ServerSocket(6000);
+			 serveur = new ServerSocket(port);
 			 
 		 }catch(IOException e){
 			 e.printStackTrace();
