@@ -1,4 +1,3 @@
-
 package modele.technique.entities;
 
 import java.awt.event.KeyEvent;
@@ -7,6 +6,7 @@ import controleur.Manager;
 import modele.metier.Action;
 import modele.metier.Carte;
 import modele.metier.entities.mob.Joueur;
+
 
 public class JoueurTechnique extends EntityTechnique {
 	
@@ -34,5 +34,4 @@ public class JoueurTechnique extends EntityTechnique {
 				j.move();
 			}
 		}
-
 }
