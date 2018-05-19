@@ -35,6 +35,7 @@ public class ConstantesTechnique {
 		singleton.setVitesse(getFloat("vitesse"));
 		singleton.setTypePerso(getInt("typePerso"));
 		singleton.setTypeCarte(getInt("typeCarte"));
+		singleton.setTypeCarte(getInt("port"));
 	}
 	
 	private float getFloat(String s) {

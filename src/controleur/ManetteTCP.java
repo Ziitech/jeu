@@ -4,45 +4,61 @@ import modele.metier.Action;
 
 public class ManetteTCP implements Action  {
 
-	private boolean[] action = new boolean[6];
+	private boolean saute;
+	private boolean deplacmentDroite;
+	private boolean deplacmentGauche;
+	private boolean tire;
+	private boolean pause;
 	
 	public void recuperation(String message) {
+		//System.out.println(message);
+		saute = tire = pause = deplacmentDroite = deplacmentGauche = false;
 		if(message == "a") {
-			sauter();
+			saute = true;
 		}
-		else if(message == "b") {
-			attaquer();
+		else if(message.equals("b")) {
+			tire = true;
 		}
-		else if(message == "y") {
-			
+		else if(message.equals("y")) {
+			pause = true;
 		}
-		else if(message == "x") {
-			
+		else if(message.equals("x")) {
+			System.out.println("nyan");
+		}
+		else if(message.equals("r")) {
+			deplacmentDroite = true;
+		}
+		else if(message.equals("l")) {
+			deplacmentGauche = true;
+		}
+		else if(message.equals("c")) {
+			deplacmentGauche = false;
+			deplacmentDroite = false;
 		}
 	}
 	
 	
 	@Override
 	public boolean deplacement_droit() {
-		return false;
+		return deplacmentDroite;
 	}
 
 	@Override
 	public boolean deplacement_gauche() {
 		// TODO Auto-generated method stub
-		return false;
+		return deplacmentGauche;
 	}
 
 	@Override
 	public boolean sauter() {
 		// TODO Auto-generated method stub
-		return false;
+		return saute;
 	}
 
 	@Override
 	public boolean attaquer() {
 		// TODO Auto-generated method stub
-		return false;
+		return tire;
 	}
 
 	@Override
@@ -54,6 +70,6 @@ public class ManetteTCP implements Action  {
 	@Override
 	public boolean pause() {
 		// TODO Auto-generated method stub
-		return false;
+		return pause;
 	}
 }

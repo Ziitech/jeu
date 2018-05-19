@@ -18,6 +18,7 @@ public class Constantes {
 	private int pourcentageColis;
 	private int nbVie;
 	private int nbManche;
+	private int port;
 	
 	public float getSaut() {
 		return saut;
@@ -106,6 +107,14 @@ public class Constantes {
 
 	public static Constantes getConstantes() {
 		return constantes;
+	}
+
+	public int getPort() {
+		return port;
+	}
+
+	public void setPort(int port) {
+		this.port = port;
 	} 
 	
 
