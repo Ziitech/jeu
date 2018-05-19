@@ -38,6 +38,8 @@ public class Accueil extends Application {
     GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
 	int w = gd.getDisplayMode().getWidth();
 	int h = gd.getDisplayMode().getHeight();
+	
+	Serveur serv2;
 
     
     @Override
@@ -66,7 +68,6 @@ public class Accueil extends Application {
         
         primaryStage.setScene(scene);
         primaryStage.show();
-               
     }
 
     public static void main(String[] args) {

@@ -35,8 +35,10 @@ public class Manager implements Runnable{
 		mouse = new MouseTechnique();
 		
 		constantes = new ConstantesTechnique();
+		
 		serv = new Serveur(6000);
 		serv.go();
+		
 	}
 	
 	public static Manager getInstance() {

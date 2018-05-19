@@ -1,5 +1,7 @@
 package vue.menu;
 
+import java.awt.TextField;
+
 import javax.swing.event.ChangeListener;
 
 import javafx.animation.TranslateTransition;
@@ -29,7 +31,6 @@ public class GameMenu extends Parent {
         VBox menu0 = new VBox(10);
         VBox menu1 = new VBox(10);
         VBox menu2 = new VBox(10);
-
         menu0.setTranslateX(100);
         menu0.setTranslateY(250);
 
@@ -125,7 +126,6 @@ public class GameMenu extends Parent {
         btnJoueurs.setOnMouseClicked(event -> {
            getChildren().add(menu2);            
 
-
             TranslateTransition tt = new TranslateTransition(Duration.seconds(0.25), menu1);
             tt.setToX(menu1.getTranslateX() - offset);
 
@@ -145,7 +145,6 @@ public class GameMenu extends Parent {
         btnVideo.setOnMouseClicked(event -> {
             getChildren().add(menu2);            
 
-
              TranslateTransition tt = new TranslateTransition(Duration.seconds(0.25), menu1);
              tt.setToX(menu1.getTranslateX() - offset);
 
@@ -159,11 +158,13 @@ public class GameMenu extends Parent {
                  getChildren().remove(menu1);
              });
          });
+             
+        TextField textFieldPort1 = new TextField("Port 1 ");
+        TextField textFieldPort2 = new TextField("Port 2 ");
         
         MenuButton btnCommande = new MenuButton("CONTROL");
         btnCommande.setOnMouseClicked(event -> {
             getChildren().add(menu2);            
-
 
              TranslateTransition tt = new TranslateTransition(Duration.seconds(0.25), menu1);
              tt.setToX(menu1.getTranslateX() - offset);
@@ -201,7 +202,7 @@ public class GameMenu extends Parent {
        
         
         menu0.getChildren().addAll(btnResume, btnOptions, btnExit);
-        menu1.getChildren().addAll(btnBack, btnJoueurs, btnVideo, btnCommande);
+        menu1.getChildren().addAll(btnBack, btnJoueurs, btnVideo,btnCommande);
         menu2.getChildren().addAll(btnBack1,radioButton1,radioButton2, radioButton3);
 
         Rectangle bg = new Rectangle(w, h);

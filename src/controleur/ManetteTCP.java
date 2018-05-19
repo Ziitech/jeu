@@ -11,7 +11,6 @@ public class ManetteTCP implements Action  {
 	private boolean pause;
 	
 	public void recuperation(String message) {
-		//System.out.println(message);
 		saute = tire = pause = deplacmentDroite = deplacmentGauche = false;
 		if(message == "a") {
 			saute = true;
@@ -23,7 +22,6 @@ public class ManetteTCP implements Action  {
 			pause = true;
 		}
 		else if(message.equals("x")) {
-			System.out.println("nyan");
 		}
 		else if(message.equals("r")) {
 			deplacmentDroite = true;
