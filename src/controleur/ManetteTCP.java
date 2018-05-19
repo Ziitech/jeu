@@ -26,11 +26,14 @@ public class ManetteTCP implements Action  {
 			System.out.println("nyan");
 		}
 		else if(message.equals("r")) {
-			System.out.println("yoshi");
 			deplacmentDroite = true;
 		}
 		else if(message.equals("l")) {
 			deplacmentGauche = true;
+		}
+		else if(message.equals("c")) {
+			deplacmentGauche = false;
+			deplacmentDroite = false;
 		}
 	}
 	

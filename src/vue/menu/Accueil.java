@@ -66,10 +66,7 @@ public class Accueil extends Application {
         
         primaryStage.setScene(scene);
         primaryStage.show();
-        
-        
-        
-        
+               
     }
 
     public static void main(String[] args) {
