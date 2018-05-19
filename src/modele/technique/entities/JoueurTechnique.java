@@ -40,22 +40,22 @@ public class JoueurTechnique extends EntityTechnique {
 		if(key.isKey(KeyEvent.VK_Z)) j.accelere(0, -j.getVitesse());
 		if(key.isKey(KeyEvent.VK_S)) j.accelere(0, j.getVitesse());
 		
-		for(float i = 0 ; i < Math.abs(j.getVitesseX()) ; i++) {
-			if(j.collision(i, 0)) {
-				j.moveX(i);
-				break;
-			}
-		}
-		for(int i = 0 ; i < Math.abs(j.getVitesseY()) ; i++) {
-			if(j.collision(0, i)) {
-				j.moveY(i);
-				break;
-			}
-		}
-		
-		/*if(!j.collision()) {
+//		for(float i = 0 ; i < Math.abs(j.getVitesseX()) ; i++) {
+//			if(j.collision(i, 0)) {
+//				j.moveX(i);
+//				break;
+//			}
+//		}
+//		for(int i = 0 ; i < Math.abs(j.getVitesseY()) ; i++) {
+//			if(j.collision(0, i)) {
+//				j.moveY(i);
+//				break;
+//			}
+//		}
+//		
+		if(!j.collision()) {
 			j.move();
-		}*/
+		}
 	}
 
 }
