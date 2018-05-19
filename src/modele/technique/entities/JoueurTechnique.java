@@ -7,6 +7,7 @@ import modele.metier.Action;
 import modele.metier.Carte;
 import modele.metier.entities.mob.Joueur;
 
+
 public class JoueurTechnique extends EntityTechnique {
 	
 	private Action c;
@@ -33,5 +34,4 @@ public class JoueurTechnique extends EntityTechnique {
 				j.move();
 			}
 		}
-
 }

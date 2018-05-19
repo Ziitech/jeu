@@ -71,6 +71,7 @@ public class Carte {
 	 * @return si la tuile est solid ou pas
 	 */
 	public boolean getSolidTileAt(int x, int y) {
+		
 		x/=tileSize;
 		y/=tileSize;
 		
