@@ -19,8 +19,8 @@ public class BoutonJouer extends JButton{
 
 	public BoutonJouer(){
 		fontEntered = new Font(Font.SERIF, Font.ITALIC, 70);
+		//
 		
-		this.setForeground(Color.WHITE);
 		this.setOpaque(false);
 		this.setContentAreaFilled(false); // On met à false pour empêcher le composant de peindre l'intérieur du JButton.
 		this.setBorderPainted(false); // De même, on ne veut pas afficher les bordures.
