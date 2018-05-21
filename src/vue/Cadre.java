@@ -95,8 +95,8 @@ public class Cadre extends JFrame implements Vue {
 	/**
 	 * affiche un ecran noir
 	 */
-	public void clear() {
-		screen.clear();
+	public void clear(int color) {
+		screen.fillColor(color);
 	}
 
 	/**

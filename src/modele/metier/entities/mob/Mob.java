@@ -75,7 +75,6 @@ public abstract class Mob extends Entity {
 	 * fait tomber l'entite
 	 */
 	public void fall() {
-		//vitesseX *= 0.5;
 		vitesseY += gravite;
 	}
 	

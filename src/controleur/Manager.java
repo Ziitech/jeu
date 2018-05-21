@@ -13,8 +13,6 @@ import modele.technique.entities.BombeTechnique;
 import modele.technique.entities.EntityTechnique;
 import modele.technique.entities.JoueurTechnique;
 import modele.technique.entities.TireTechnique;
-import modele.technique.input.KeyboardTechnique;
-import modele.technique.input.MouseTechnique;
 import modele.technique.input.Serveur;
 import vue.Vue;
 import vue.sprite.Sprite;
@@ -30,6 +28,7 @@ public class Manager implements Runnable{
 	private Manager() {
 		affichage = new Thread(this);
 		entities = new Vector<>();
+		ajouts = new Vector<>();
 		
 		key = new KeyboardTechnique();
 		mouse = new MouseTechnique();
@@ -67,30 +66,33 @@ public class Manager implements Runnable{
 			List<EntityTechnique> removedEntities = new Vector<>();
 			
 			//clear l'ecran
-			vue.clear();	//inutile ?
+			vue.clear(0xff00c1c1);
 			
 			//render Map here ! 
 			drawMap();
 			
 			//TEST :
-			if(mouse.getMouse().buttonClicked(1)) addBombe(mouse.getX(), mouse.getY());
-			if(key.getKey().isKeyDown(KeyEvent.VK_G)) map.generate();
-			if(key.getKey().isKeyDown(KeyEvent.VK_P)) pause = !pause;
+			if(key.pause()) pause = !pause;
 			
 			//AFFICHAGE
 			for (EntityTechnique e : entities) {
 				vue.drawEntity(e.getX(), e.getY(),choixSprite(e.getType()), e.getFlip());
 				if(e.needRemove()) removedEntities.add(e);
 			}
-			//REMOVE
+			//REMOVE Entity
 			for (EntityTechnique e : removedEntities) {
 				entities.remove(e);
 			}
+			removedEntities.clear();
 			
-			vue.drawCursor(mouse.getMouse().getMouseX(), mouse.getMouse().getMouseY());
+			//adding entity
+			for (EntityTechnique e : ajouts) {
+				entities.add(e);
+			}
+			ajouts.clear();
 			
-			mouse.update();
-			key.update();
+			//vue.drawCursor(mouse.getMouse().getMouseX(), mouse.getMouse().getMouseY());
+			
 			
 			vue.render(); // affichage sur la fenetre
 		}
@@ -98,6 +100,7 @@ public class Manager implements Runnable{
 	
 	//----------------JEU--------------
 	private List<EntityTechnique> entities;
+	private List<EntityTechnique> ajouts;
 	private Carte map;
 	
 	/**
@@ -116,9 +119,9 @@ public class Manager implements Runnable{
 		System.out.println("Starting new Game !");
 		constantes.readFile("src/prop.properties");
 		
-		addJoueur(100, 100);
+		addJoueurs(vue.getFrameWidth());
 		
-		Random rand = new Random();
+		//Random rand = new Random();
 		//for(int i=0; i < 10;i++){
 		//	addArme(rand.nextInt(vue.getFrameWidth()), 20);
 		//}
@@ -144,20 +147,26 @@ public class Manager implements Runnable{
 		}
 	}
 	
-	public void addJoueur(int x, int y) {
-		entities.add(new JoueurTechnique(x, y, map, serv.getManette()));
+	public void addJoueurs(int x) {
+		int x1 = (x/2) - (x/3) ;
+		int x2 = (x/2) + (x/3) ;
+		
+		int y = 60;
+		
+		ajouts.add(new JoueurTechnique(x1, y, map, key));
+		ajouts.add(new JoueurTechnique(x2, y+10, map, serv.getManette()));
 	}
 	
 	public void addArme(int x, int y) {
-		entities.add(new ArmeTechnique(x, y, map));
+		ajouts.add(new ArmeTechnique(x, y, map));
 	}
 	
 	public void addBombe(int x, int y) {
-		entities.add(new BombeTechnique(x, y, map));
+		ajouts.add(new BombeTechnique(x, y, map));
 	}
 	
 	public void addTire(int x, int y) {
-		entities.add(new TireTechnique(x, y, mouse.getX(), mouse.getY(), map));
+		ajouts.add(new TireTechnique(x, y, vue.getFrameWidth()/2, vue.getFrameHeight()/2, map));
 	}
 	
 	private Sprite choixSprite(int type) {
@@ -187,6 +196,11 @@ public class Manager implements Runnable{
 	}
 	
 	List<Arme> arme;
+
+
+	public void pause() {
+		pause = !pause;
+	}
 	
 
 }

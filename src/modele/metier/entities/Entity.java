@@ -51,7 +51,6 @@ public abstract class Entity {
 	 * retirer l'entite 
 	 */
 	public void remove() {
-		System.out.println("remove " + this.getClass().getSimpleName());
 		removed = true;
 	}
 

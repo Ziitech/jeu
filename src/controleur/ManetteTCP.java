@@ -33,6 +33,11 @@ public class ManetteTCP implements Action  {
 			deplacmentGauche = false;
 			deplacmentDroite = false;
 		}
+		else if(message.equals("s")) {
+			tire = false;
+			pause = false;
+			saute = false;
+		}
 	}
 	
 	
@@ -43,25 +48,21 @@ public class ManetteTCP implements Action  {
 
 	@Override
 	public boolean deplacement_gauche() {
-		// TODO Auto-generated method stub
 		return deplacmentGauche;
 	}
 
 	@Override
 	public boolean sauter() {
-		// TODO Auto-generated method stub
 		return saute;
 	}
 
 	@Override
 	public boolean attaquer() {
-		// TODO Auto-generated method stub
 		return tire;
 	}
 
 	@Override
 	public boolean action() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
