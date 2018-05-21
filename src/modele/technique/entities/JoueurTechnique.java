@@ -22,15 +22,15 @@ public class JoueurTechnique extends EntityTechnique {
 		protected void update() {
 			Joueur j = (Joueur) e;
 			j.controleTrajectoire();
-			//j.fall();
+			j.saute();
 			
-			//if(key.isKeyDown(KeyEvent.VK_SPACE)) //Manager.getInstance().addJoueur(60,60);
-			
+			if(c.attaquer()) Manager.getInstance().addTire(j.getX(), j.getY());
 			if(c.sauter()) j.saute();
 			if(c.deplacement_droit()) j.accelere(j.getVitesse(), 0);
 			if(c.deplacement_gauche()) j.accelere(-j.getVitesse(), 0);
 			
 			if(!j.collision()) {
+				j.fall();
 				j.move();
 			}
 		}

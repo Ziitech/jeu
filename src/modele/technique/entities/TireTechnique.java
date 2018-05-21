@@ -12,15 +12,11 @@ public class TireTechnique  extends EntityTechnique{
 	@Override
 	protected void update() {
 		Tire j = (Tire) e;
-		//j.avance();
 		
-		j.accelere(j.getVitesseX(), j.getVitesseY());
+		j.move();
 		
 		if(j.collision()) {
 			j.explose();
-		}
-		else {
-			j.move();
 		}
 		
 	}
