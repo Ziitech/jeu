@@ -13,7 +13,7 @@ public class Tire extends Mob {
 	//private int cibleY;
 	private int puissance;
 	
-	private int vitesse;
+	private float vitesse;
 	
 	
 	public Tire(int x, int y, int cibleX, int cibleY, Carte map) {
@@ -24,7 +24,7 @@ public class Tire extends Mob {
 		
 		Random rand = new Random();
 		
-		vitesse = 5;
+		vitesse = 10f;
 		
 		// petit puissance
 		puissance = rand.nextInt(5)+5;
