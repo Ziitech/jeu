@@ -13,8 +13,6 @@ import modele.technique.entities.BombeTechnique;
 import modele.technique.entities.EntityTechnique;
 import modele.technique.entities.JoueurTechnique;
 import modele.technique.entities.TireTechnique;
-import modele.technique.input.KeyboardTechnique;
-import modele.technique.input.MouseTechnique;
 import modele.technique.input.Serveur;
 import vue.Vue;
 import vue.sprite.Sprite;
@@ -73,9 +71,9 @@ public class Manager implements Runnable{
 			drawMap();
 			
 			//TEST :
-			if(mouse.getMouse().buttonClicked(1)) addBombe(mouse.getX(), mouse.getY());
-			if(key.getKey().isKeyDown(KeyEvent.VK_G)) map.generate();
-			if(key.getKey().isKeyDown(KeyEvent.VK_P)) pause = !pause;
+			//if(mouse.getMouse().buttonClicked(1)) addBombe(mouse.getX(), mouse.getY());
+			//if(key.getKey().isKeyDown(KeyEvent.VK_G)) map.generate();
+			//if(key.getKey().isKeyDown(KeyEvent.VK_P)) pause = !pause;
 			
 			//AFFICHAGE
 			for (EntityTechnique e : entities) {
@@ -87,10 +85,8 @@ public class Manager implements Runnable{
 				entities.remove(e);
 			}
 			
-			vue.drawCursor(mouse.getMouse().getMouseX(), mouse.getMouse().getMouseY());
+			//vue.drawCursor(mouse.getMouse().getMouseX(), mouse.getMouse().getMouseY());
 			
-			mouse.update();
-			key.update();
 			
 			vue.render(); // affichage sur la fenetre
 		}
@@ -145,7 +141,8 @@ public class Manager implements Runnable{
 	}
 	
 	public void addJoueur(int x, int y) {
-		entities.add(new JoueurTechnique(x, y, map, serv.getManette()));
+		entities.add(new JoueurTechnique(x, y, map, key));
+		entities.add(new JoueurTechnique(x+350, y+10, map, serv.getManette()));
 	}
 	
 	public void addArme(int x, int y) {

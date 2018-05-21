@@ -1,4 +1,4 @@
-package vue.menu;
+/*package vue.menu;
 
 <<<<<<< HEAD
 import java.awt.TextField;
@@ -418,4 +418,4 @@ public class GameMenu extends Parent {
 	}
 >>>>>>> 1380e57e6839b33f6c4523ecf11b34e1a85857d3
 
-}
+}*/
