@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 
 import javax.swing.JFrame;
 
+import controleur.Manager;
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
 import javafx.application.Application;
@@ -27,13 +28,14 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import modele.technique.input.Serveur;
+import vue.Cadre;
 import vue.menu.action.JouerAction;
 import vue.menu.bouton.BoutonJouer;
 import javafx.scene.input.KeyCode;
 
 public class Accueil extends Application {
 	
-    private GameMenu gameMenu;
+    //private GameMenu gameMenu;
     Stage primaryStage;
     GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
 	int w = gd.getDisplayMode().getWidth();
@@ -57,13 +59,13 @@ public class Accueil extends Application {
         imgView.setFitWidth(w);
         imgView.setFitHeight(h);
 
-        gameMenu = new GameMenu(primaryStage,w,h);
-        gameMenu.setVisible(false);
+        //gameMenu = new GameMenu(primaryStage,w,h);
+       // gameMenu.setVisible(false);
 
-        root.getChildren().addAll(imgView, gameMenu);
+       // root.getChildren().addAll(imgView, gameMenu);
 
         Scene scene = new Scene(root);
-        gameMenu.setVisible(true);
+       // gameMenu.setVisible(true);
         
         
         primaryStage.setScene(scene);
@@ -71,7 +73,12 @@ public class Accueil extends Application {
     }
 
     public static void main(String[] args) {
-        launch(args);
+        //launch(args);
+    	GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+    	int w = gd.getDisplayMode().getWidth();
+    	int h = gd.getDisplayMode().getHeight();
+    	new Cadre(w,h);
+    	Manager.getInstance().startGame();
     }
 }
 

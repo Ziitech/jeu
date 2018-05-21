@@ -7,7 +7,6 @@ import java.util.List;
 
 import modele.metier.Carte;
 import modele.metier.Constantes;
-import modele.metier.input.Keyboard;
 
 /**
  * Classe joueur controlable par l'utilisateur
@@ -43,8 +42,8 @@ public class Joueur extends Mob {
 	}
 	
 	public void controleTrajectoire() {
-		vitesseX *= 0.5f;
-		vitesseY *= 0.5f; // test
+		vitesseX = 0f;
+		//vitesseY = 0f; // test
 	}
 	
 	public int getVie() {

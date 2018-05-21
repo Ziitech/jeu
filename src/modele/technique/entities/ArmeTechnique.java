@@ -1,17 +1,8 @@
 package modele.technique.entities;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseMotionListener;
-
-import controleur.Manager;
 import modele.metier.Carte;
 import modele.metier.Constantes;
-import modele.metier.entities.mob.Bombe;
-import modele.metier.entities.mob.Joueur;
-import modele.metier.entities.mob.Mob;
 import modele.metier.entities.mob.Pistolet;
-import modele.metier.input.Keyboard;
-import modele.technique.input.KeyboardTechnique;
 
 public class ArmeTechnique extends EntityTechnique {
 	
