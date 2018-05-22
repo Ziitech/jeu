@@ -1,10 +1,5 @@
 package modele.metier.entities.mob;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
-import java.util.List;
-
 import modele.metier.Carte;
 import modele.metier.Constantes;
 
@@ -18,14 +13,8 @@ import modele.metier.Constantes;
 
 public class Joueur extends Mob {
 
-
-	/**
-	 * clavier qui controle le joueur
-	 */
 	private int vie;
 	private float vitesse;
-	
-	
 	
 
 	public Joueur(int x, int y,Carte map) {
@@ -42,7 +31,7 @@ public class Joueur extends Mob {
 	}
 	
 	public void controleTrajectoire() {
-		vitesseX = 0f;
+		vitesseX *= 0.5f;
 		//vitesseY = 0f; // test
 	}
 	

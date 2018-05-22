@@ -31,6 +31,12 @@ public class ArmeTechnique extends EntityTechnique {
 //		}
 		
 	}
+
+	@Override
+	protected void collisionEntite(EntityTechnique entityTechnique) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 
 }

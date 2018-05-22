@@ -1,7 +1,6 @@
 package modele.technique;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -35,7 +34,8 @@ public class ConstantesTechnique {
 		singleton.setVitesse(getFloat("vitesse"));
 		singleton.setTypePerso(getInt("typePerso"));
 		singleton.setTypeCarte(getInt("typeCarte"));
-		singleton.setTypeCarte(getInt("port"));
+		singleton.setSaut(getFloat("saut"));
+		//singleton.setTypeCarte(getInt("port"));
 	}
 	
 	private float getFloat(String s) {

@@ -1,12 +1,9 @@
 package controleur;
 
-import java.awt.event.KeyEvent;
 import java.util.List;
-import java.util.Random;
 import java.util.Vector;
 
 import modele.metier.Carte;
-import modele.metier.entities.mob.Arme;
 import modele.technique.ConstantesTechnique;
 import modele.technique.entities.ArmeTechnique;
 import modele.technique.entities.BombeTechnique;
@@ -148,8 +145,8 @@ public class Manager implements Runnable{
 	}
 	
 	public void addJoueurs(int x) {
-		int x1 = (x/2) - (x/3) ;
-		int x2 = (x/2) + (x/3) ;
+		int x1 = (int) ((x/2) - (x/2.5f)) ;
+		int x2 = (int) ((x/2) + (x/2.5f)) ;
 		
 		int y = 60;
 		
@@ -165,8 +162,9 @@ public class Manager implements Runnable{
 		ajouts.add(new BombeTechnique(x, y, map));
 	}
 	
-	public void addTire(int x, int y) {
-		ajouts.add(new TireTechnique(x, y, vue.getFrameWidth()/2, vue.getFrameHeight()/2, map));
+	public void addTire(int x, int y, boolean d) {
+		if(d) ajouts.add(new TireTechnique(x, y, x+1, y, map));
+		else ajouts.add(new TireTechnique(x, y, x-1, y, map));
 	}
 	
 	private Sprite choixSprite(int type) {
@@ -195,11 +193,35 @@ public class Manager implements Runnable{
 		return pause;
 	}
 	
-	List<Arme> arme;
+	//List<Arme> arme;
 
 
 	public void pause() {
 		pause = !pause;
+	}
+
+	public int[] getPosX() {
+		int[] retour = new int[entities.size()];
+		
+		for (int i : retour) {
+			retour[i] = entities.get(i).getX();
+		}
+		
+		return retour;
+	}
+	
+	public int[] getPosY() {
+		int[] retour = new int[entities.size()];
+		
+		for (int i : retour) {
+			retour[i] = entities.get(i).getY();
+		}
+		
+		return retour;
+	}
+
+	public List<EntityTechnique> getEntities() {
+		return entities;
 	}
 	
 

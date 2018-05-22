@@ -25,4 +25,10 @@ public class BombeTechnique extends EntityTechnique{
 		
 	}
 
+	@Override
+	protected void collisionEntite(EntityTechnique entityTechnique) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
