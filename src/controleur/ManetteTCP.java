@@ -12,7 +12,7 @@ public class ManetteTCP implements Action  {
 	
 	public void recuperation(String message) {
 		saute = tire = pause = deplacmentDroite = deplacmentGauche = false;
-		if(message == "a") {
+		if(message.equals("a")) {
 			saute = true;
 		}
 		else if(message.equals("b")) {
