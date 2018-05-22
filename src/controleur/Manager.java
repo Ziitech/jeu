@@ -3,7 +3,6 @@ package controleur;
 import java.awt.Color;
 import java.util.List;
 import java.util.Vector;
-
 import modele.metier.Carte;
 import modele.technique.ConstantesTechnique;
 import modele.technique.entities.ArmeTechnique;
