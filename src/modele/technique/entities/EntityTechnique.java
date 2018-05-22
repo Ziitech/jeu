@@ -1,5 +1,8 @@
 package modele.technique.entities;
 
+import java.util.List;
+import java.util.Vector;
+
 import controleur.Manager;
 import modele.metier.entities.Entity;
 
@@ -57,6 +60,31 @@ public abstract class EntityTechnique implements Runnable{
 		}
 	}
 	
+	protected void checkCollisionEntite(List<EntityTechnique> ent) {
+		
+		List<EntityTechnique> nouvEnt =  new Vector(ent);
+		nouvEnt.remove(this);
+		
+		int[] posX = new int[nouvEnt.size()];
+		int[] posY = new int[nouvEnt.size()];
+		
+		for(int i = 0 ; i < nouvEnt.size() ; i++) {
+			posX[i] = nouvEnt.get(i).getX();
+			posY[i] = nouvEnt.get(i).getY();
+		}
+		
+		if(posY.length != posX.length) return;
+		
+		for(int i = 0 ; i < posY.length ; i++) {
+			if(e.getX() == posX[i] && e.getY() == posY[i]) {
+				collisionEntite(nouvEnt.get(i));
+			}
+		}
+		
+	}
+	
+	protected abstract void collisionEntite(EntityTechnique entityTechnique);
+	
 	protected abstract void update();
 	
 	public int getX() {
@@ -77,6 +105,10 @@ public abstract class EntityTechnique implements Runnable{
 
 	public int getType() {
 		return e.getType();
+	}
+
+	public void die() {
+		e.remove();
 	}
 
 

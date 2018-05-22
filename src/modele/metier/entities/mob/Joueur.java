@@ -1,10 +1,5 @@
 package modele.metier.entities.mob;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
-import java.util.List;
-
 import modele.metier.Carte;
 import modele.metier.Constantes;
 

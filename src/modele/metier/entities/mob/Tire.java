@@ -1,8 +1,5 @@
 package modele.metier.entities.mob;
 
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
 import java.util.Random;
 
 import modele.metier.Carte;

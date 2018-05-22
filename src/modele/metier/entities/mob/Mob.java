@@ -86,6 +86,8 @@ public abstract class Mob extends Entity {
 	public void accelere(float ax, float ay) {
 		this.vitesseX += ax;
 		this.vitesseY += ay;
+		if(vitesseX > 0) flip = false;
+		if(vitesseX < 0) flip = true;
 	}
 
 	/**
@@ -93,8 +95,7 @@ public abstract class Mob extends Entity {
 	 */
 	public void move() {
 		checkInBound();
-		if(vitesseX > 0) flip = false;
-		if(vitesseX < 0) flip = true;
+		
 		this.x += vitesseX;
 		this.y += vitesseY;
 	}

@@ -30,6 +30,20 @@ public class Carte {
 		generate();
 	}
 	
+	public void generateFlat() {
+		
+		for(int x = 0 ; x < width ; x++) {
+			for(int y = 0 ; y < height ; y++) {
+				
+				if(y> height / 2) tiles[x+y*width] = 0xff99ff66;
+				else tiles[x+y*width] = backgroundColor;
+			
+			}
+		}
+				
+		
+	}
+	
 	/**
 	 * genere un terrain aleatoire
 	 */

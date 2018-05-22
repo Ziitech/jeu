@@ -21,4 +21,10 @@ public class TireTechnique  extends EntityTechnique{
 		
 	}
 
+	@Override
+	protected void collisionEntite(EntityTechnique entityTechnique) {
+		entityTechnique.die();
+		
+	}
+
 }

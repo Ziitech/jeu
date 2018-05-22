@@ -1,7 +1,5 @@
 package modele.technique.entities;
 
-import java.awt.event.KeyEvent;
-
 import controleur.Manager;
 import modele.metier.Action;
 import modele.metier.Carte;
@@ -33,9 +31,17 @@ public class JoueurTechnique extends EntityTechnique {
 			if(c.deplacement_droit()) j.accelere(j.getVitesse(), 0);
 			if(c.deplacement_gauche()) j.accelere(-j.getVitesse(), 0);
 			
+			checkCollisionEntite(Manager.getInstance().getEntities());
+			
 			if(!j.collision()) {
 				j.fall();
 				j.move();
 			}
 		}
+
+	@Override
+	protected void collisionEntite(EntityTechnique entityTechnique) {
+		// TODO Auto-generated method stub
+		
+	}
 }

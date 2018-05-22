@@ -1,12 +1,9 @@
 package controleur;
 
-import java.awt.event.KeyEvent;
 import java.util.List;
-import java.util.Random;
 import java.util.Vector;
 
 import modele.metier.Carte;
-import modele.metier.entities.mob.Arme;
 import modele.technique.ConstantesTechnique;
 import modele.technique.entities.ArmeTechnique;
 import modele.technique.entities.BombeTechnique;
@@ -196,11 +193,35 @@ public class Manager implements Runnable{
 		return pause;
 	}
 	
-	List<Arme> arme;
+	//List<Arme> arme;
 
 
 	public void pause() {
 		pause = !pause;
+	}
+
+	public int[] getPosX() {
+		int[] retour = new int[entities.size()];
+		
+		for (int i : retour) {
+			retour[i] = entities.get(i).getX();
+		}
+		
+		return retour;
+	}
+	
+	public int[] getPosY() {
+		int[] retour = new int[entities.size()];
+		
+		for (int i : retour) {
+			retour[i] = entities.get(i).getY();
+		}
+		
+		return retour;
+	}
+
+	public List<EntityTechnique> getEntities() {
+		return entities;
 	}
 	
 
