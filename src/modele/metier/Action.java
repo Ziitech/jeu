@@ -1,6 +1,7 @@
 package modele.metier;
 
 public interface Action {
+	
 	public boolean deplacement_droit();
 	public boolean deplacement_gauche();
 	public boolean sauter();

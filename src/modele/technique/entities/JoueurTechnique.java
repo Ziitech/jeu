@@ -20,11 +20,15 @@ public class JoueurTechnique extends EntityTechnique {
 	
 	@Override
 		protected void update() {
+		
 			Joueur j = (Joueur) e;
-			j.controleTrajectoire();
-			j.saute();
 			
-			if(c.attaquer()) Manager.getInstance().addTire(j.getX(), j.getY());
+			j.controleTrajectoire();
+			
+			if(c.attaquer()) {
+				if(j.getVitesseX() > 0) Manager.getInstance().addTire(j.getX(), j.getY() , true);
+				if(j.getVitesseX() < 0) Manager.getInstance().addTire(j.getX(), j.getY() , false);
+			}
 			if(c.sauter()) j.saute();
 			if(c.deplacement_droit()) j.accelere(j.getVitesse(), 0);
 			if(c.deplacement_gauche()) j.accelere(-j.getVitesse(), 0);

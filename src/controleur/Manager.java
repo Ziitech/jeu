@@ -148,8 +148,8 @@ public class Manager implements Runnable{
 	}
 	
 	public void addJoueurs(int x) {
-		int x1 = (x/2) - (x/3) ;
-		int x2 = (x/2) + (x/3) ;
+		int x1 = (int) ((x/2) - (x/2.5f)) ;
+		int x2 = (int) ((x/2) + (x/2.5f)) ;
 		
 		int y = 60;
 		
@@ -165,8 +165,9 @@ public class Manager implements Runnable{
 		ajouts.add(new BombeTechnique(x, y, map));
 	}
 	
-	public void addTire(int x, int y) {
-		ajouts.add(new TireTechnique(x, y, vue.getFrameWidth()/2, vue.getFrameHeight()/2, map));
+	public void addTire(int x, int y, boolean d) {
+		if(d) ajouts.add(new TireTechnique(x, y, x+1, y, map));
+		else ajouts.add(new TireTechnique(x, y, x-1, y, map));
 	}
 	
 	private Sprite choixSprite(int type) {
