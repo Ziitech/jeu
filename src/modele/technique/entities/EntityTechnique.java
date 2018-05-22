@@ -42,7 +42,7 @@ public abstract class EntityTechnique implements Runnable{
 	public void run() {
 		while(!e.isRemoved()) {
 			try {
-				Thread.sleep(17); // Pour les 60 update/sec
+				Thread.sleep(25); // 17 pour les 60 update/sec
 			} catch (InterruptedException e1) {
 				e1.printStackTrace();
 			}
