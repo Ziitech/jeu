@@ -182,6 +182,9 @@ public class Manager implements Runnable{
 		case 5:
 			retour = Sprite.balle;
 			break;
+		case 6 :
+			retour = Sprite.fleche;
+			break;
 		default :
 			retour = Sprite.snake;
 		}

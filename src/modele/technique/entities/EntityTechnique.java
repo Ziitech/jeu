@@ -62,7 +62,7 @@ public abstract class EntityTechnique implements Runnable{
 	
 	protected void checkCollisionEntite(List<EntityTechnique> ent) {
 		
-		List<EntityTechnique> nouvEnt =  new Vector(ent);
+		List<EntityTechnique> nouvEnt =  new Vector<EntityTechnique>(ent);
 		nouvEnt.remove(this);
 		
 		int[] posX = new int[nouvEnt.size()];
