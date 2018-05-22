@@ -35,7 +35,7 @@ import javafx.scene.input.KeyCode;
 
 public class Accueil extends Application {
 	
-    //private GameMenu gameMenu;
+    private GameMenu gameMenu;
     Stage primaryStage;
     GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
 	int w = gd.getDisplayMode().getWidth();
@@ -59,13 +59,13 @@ public class Accueil extends Application {
         imgView.setFitWidth(w);
         imgView.setFitHeight(h);
 
-        //gameMenu = new GameMenu(primaryStage,w,h);
-       // gameMenu.setVisible(false);
+        gameMenu = new GameMenu(primaryStage,w,h);
+        gameMenu.setVisible(false);
 
-       // root.getChildren().addAll(imgView, gameMenu);
+        root.getChildren().addAll(imgView, gameMenu);
 
         Scene scene = new Scene(root);
-       // gameMenu.setVisible(true);
+        gameMenu.setVisible(true);
         
         
         primaryStage.setScene(scene);
@@ -73,12 +73,12 @@ public class Accueil extends Application {
     }
 
     public static void main(String[] args) {
-        //launch(args);
-    	GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-    	int w = gd.getDisplayMode().getWidth();
-    	int h = gd.getDisplayMode().getHeight();
-    	new Cadre(w,h);
-    	Manager.getInstance().startGame();
+        launch(args);
+//    	GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+//    	int w = gd.getDisplayMode().getWidth();
+//    	int h = gd.getDisplayMode().getHeight();
+//    	new Cadre(w,h);
+//    	Manager.getInstance().startGame();
     }
 }
 
