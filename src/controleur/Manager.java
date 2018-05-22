@@ -68,7 +68,7 @@ public class Manager implements Runnable{
 			
 			//clear l'ecran
 			vue.clear(Color.HSBtoRGB(color, 1.0f, 1.0f));
-			color += 0.001f;
+			color += 0.0001f;
 			//render Map here ! 
 			drawMap();
 			
