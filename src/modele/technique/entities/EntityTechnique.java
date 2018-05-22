@@ -42,7 +42,7 @@ public abstract class EntityTechnique implements Runnable{
 	public void run() {
 		while(!e.isRemoved()) {
 			try {
-				Thread.sleep(17); // Pour les 60 update/sec
+				Thread.sleep(25); // 17 pour les 60 update/sec
 			} catch (InterruptedException e1) {
 				e1.printStackTrace();
 			}
@@ -62,7 +62,7 @@ public abstract class EntityTechnique implements Runnable{
 	
 	protected void checkCollisionEntite(List<EntityTechnique> ent) {
 		
-		List<EntityTechnique> nouvEnt =  new Vector(ent);
+		List<EntityTechnique> nouvEnt =  new Vector<EntityTechnique>(ent);
 		nouvEnt.remove(this);
 		
 		int[] posX = new int[nouvEnt.size()];

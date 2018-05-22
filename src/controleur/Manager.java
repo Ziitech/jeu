@@ -1,8 +1,8 @@
 package controleur;
 
+import java.awt.Color;
 import java.util.List;
 import java.util.Vector;
-
 import modele.metier.Carte;
 import modele.technique.ConstantesTechnique;
 import modele.technique.entities.ArmeTechnique;
@@ -35,6 +35,9 @@ public class Manager implements Runnable{
 		serv = new Serveur(6000);
 		serv.go();
 		
+		
+		color = 0.0f;
+		
 	}
 	
 	public static Manager getInstance() {
@@ -63,8 +66,8 @@ public class Manager implements Runnable{
 			List<EntityTechnique> removedEntities = new Vector<>();
 			
 			//clear l'ecran
-			vue.clear(0xff00c1c1);
-			
+			vue.clear(Color.HSBtoRGB(color, 1.0f, 1.0f));
+			color += 0.001f;
 			//render Map here ! 
 			drawMap();
 			
@@ -98,6 +101,7 @@ public class Manager implements Runnable{
 	//----------------JEU--------------
 	private List<EntityTechnique> entities;
 	private List<EntityTechnique> ajouts;
+	private float color;
 	private Carte map;
 	
 	/**
@@ -181,6 +185,9 @@ public class Manager implements Runnable{
 			break;
 		case 5:
 			retour = Sprite.balle;
+			break;
+		case 6 :
+			retour = Sprite.fleche;
 			break;
 		default :
 			retour = Sprite.snake;

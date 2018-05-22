@@ -40,7 +40,7 @@ public class Tire extends Mob {
 		
 		vitesseY = dirY * vitesse;//= cibleY * vitesse;
 		
-		type = 5;
+		type = 6;
 	}
 	
 	public void explose() {
