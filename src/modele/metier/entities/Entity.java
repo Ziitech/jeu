@@ -1,5 +1,7 @@
 package modele.metier.entities;
 
+import java.awt.Rectangle;
+
 /**
  * 
  * @author Nandaleio
@@ -77,6 +79,15 @@ public abstract class Entity {
 		if(x==xa && y==ya){
 			remove();
 		}
+	}
+
+	public Rectangle getBounds() {
+		return null;//new Rectangle(x, y, x, y);
+	}
+
+	public void setType(int i) {
+		type = i;
+		
 	}
 	
 

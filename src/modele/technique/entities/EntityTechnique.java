@@ -1,5 +1,6 @@
 package modele.technique.entities;
 
+import java.awt.Rectangle;
 import java.util.List;
 import java.util.Vector;
 
@@ -95,6 +96,10 @@ public abstract class EntityTechnique implements Runnable{
 		return e.getY();
 	}
 	
+	public Rectangle getBounds() {
+		return e.getBounds();
+	}
+	
 	public boolean getFlip() {
 		return e.getFlip();
 	}
@@ -111,5 +116,9 @@ public abstract class EntityTechnique implements Runnable{
 		e.remove();
 	}
 
+	public void setType() {
+		e.setType(3);
+		
+	}
 
 }

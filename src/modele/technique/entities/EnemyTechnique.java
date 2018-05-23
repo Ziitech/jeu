@@ -5,7 +5,6 @@ import java.awt.Rectangle;
 import modele.metier.Action;
 import modele.metier.Carte;
 import modele.metier.entities.mob.Enemy;
-import modele.metier.entities.mob.Tire;
 
 public class EnemyTechnique extends EntityTechnique{
 
@@ -39,8 +38,7 @@ public class EnemyTechnique extends EntityTechnique{
 	}
 	
 	public void mort() {
-		System.out.println("Dnas enemyTechniaue");
-		j.mort();
+		j.remove();
 	}
 
 

@@ -24,8 +24,8 @@ public class JoueurTechnique extends EntityTechnique {
 			j.controleTrajectoire();
 			
 			if(c.attaquer()) {
-				if(j.getVitesseX() > 0) Manager.getInstance().addTire(j.getX(), j.getY() , true);
-				if(j.getVitesseX() < 0) Manager.getInstance().addTire(j.getX(), j.getY() , false);
+				if(j.getVitesseX() > 0) Manager.getInstance().addTire(j.getX(), j.getY() , true, this);
+				if(j.getVitesseX() < 0) Manager.getInstance().addTire(j.getX(), j.getY() , false, this);
 			}
 			if(c.sauter()) j.saute();
 			if(c.deplacement_droit()) j.accelere(j.getVitesse(), 0);

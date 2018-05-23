@@ -1,6 +1,8 @@
 
 package modele.metier.entities.mob;
 
+import java.awt.Rectangle;
+
 import modele.metier.Carte;
 import modele.metier.Constantes;
 import modele.metier.entities.Entity;
@@ -51,8 +53,8 @@ public abstract class Mob extends Entity {
 		puissanceSaut = Constantes.getConstantes().getSaut();
 		
 		//hard coded :
-		width = 40;
-		height = 40;
+		width = 0;
+		height = 0;
 	}
 	
 	
@@ -145,6 +147,10 @@ public abstract class Mob extends Entity {
 	
 	public float getVitesseY() {
 		return vitesseY;
+	}
+	
+	public Rectangle getBounds() {
+		return new Rectangle(x, y, width, height);
 	}
 }
 	
