@@ -14,8 +14,9 @@ public class TireTechnique  extends EntityTechnique{
 		Tire j = (Tire) e;
 		
 		j.move();
-		
+		j.checkCollisions();
 		if(j.collision()) {
+			
 			j.explose();
 		}
 		

@@ -1,12 +1,16 @@
 package controleur;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Vector;
 import modele.metier.Carte;
+import modele.metier.entities.mob.Enemy;
 import modele.technique.ConstantesTechnique;
 import modele.technique.entities.ArmeTechnique;
 import modele.technique.entities.BombeTechnique;
+import modele.technique.entities.EnemyTechnique;
 import modele.technique.entities.EntityTechnique;
 import modele.technique.entities.JoueurTechnique;
 import modele.technique.entities.TireTechnique;
@@ -26,7 +30,7 @@ public class Manager implements Runnable{
 		affichage = new Thread(this);
 		entities = new Vector<>();
 		ajouts = new Vector<>();
-		
+		enemyList = new ArrayList<>();
 		key = new KeyboardTechnique();
 		mouse = new MouseTechnique();
 		
@@ -121,11 +125,11 @@ public class Manager implements Runnable{
 		constantes.readFile("src/prop.properties");
 		
 		addJoueurs(vue.getFrameWidth());
-		
-		//Random rand = new Random();
-		//for(int i=0; i < 10;i++){
-		//	addArme(rand.nextInt(vue.getFrameWidth()), 20);
-		//}
+		int enemyCount = 5;
+		Random rand = new Random();
+		for(int i=0; i < enemyCount;i++){
+			addEnemy(rand.nextInt(vue.getFrameWidth()), rand.nextInt(vue.getFrameHeight()));
+		}
 		pause = false;
 		
 		
@@ -155,12 +159,23 @@ public class Manager implements Runnable{
 		int y = 60;
 		
 		ajouts.add(new JoueurTechnique(x1, y, map, key));
-		ajouts.add(new JoueurTechnique(x2, y+10, map, serv.getManette()));
+		//addEnemy(x2,y);
+		
+		
 	}
 	
 	public void addArme(int x, int y) {
 		ajouts.add(new ArmeTechnique(x, y, map));
 	}
+	
+	public void addEnemy(int x, int y) {
+	
+//		for(int i=0; i<(Math.random()*5000);i++)
+		enemyList.add(new EnemyTechnique(x, 430, map, serv.getManette()));
+		ajouts.add(new EnemyTechnique(x, 430, map, serv.getManette()));
+	}
+	
+	
 	
 	public void addBombe(int x, int y) {
 		ajouts.add(new BombeTechnique(x, y, map));
@@ -229,6 +244,20 @@ public class Manager implements Runnable{
 
 	public List<EntityTechnique> getEntities() {
 		return entities;
+	}
+	
+    ArrayList<EnemyTechnique> enemyList;
+
+	public ArrayList<EnemyTechnique> getEnemyList() {
+		System.out.println("dans getEnemyList");
+		return enemyList;
+	}
+
+	public void removeEnemy(EnemyTechnique tempEnemy) {
+		System.out.println("dans removeEnemy");
+		tempEnemy.mort();
+		
+		
 	}
 	
 

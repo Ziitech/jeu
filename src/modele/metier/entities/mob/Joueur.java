@@ -1,5 +1,7 @@
 package modele.metier.entities.mob;
 
+import java.awt.Rectangle;
+
 import modele.metier.Carte;
 import modele.metier.Constantes;
 
@@ -49,6 +51,10 @@ public class Joueur extends Mob {
 
 	public void setVitesse(float vitesse) {
 		this.vitesse = vitesse;
+	}
+	
+	public Rectangle getBounds(){
+		return new Rectangle(x, y, 40,40);
 	}
 
 	

@@ -73,5 +73,11 @@ public abstract class Entity {
 		return type;
 	}
 	
+	public void explosion(int xa, int ya) {
+		if(x==xa && y==ya){
+			remove();
+		}
+	}
+	
 
 }
