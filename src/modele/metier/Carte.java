@@ -35,7 +35,7 @@ public class Carte {
 		for(int x = 0 ; x < width ; x++) {
 			for(int y = 0 ; y < height ; y++) {
 				
-				if(y> height / 2) tiles[x+y*width] = 0xff99ff66;
+				if(y> height / 2) tiles[x+y*width] = 0xff09ff66;
 				else tiles[x+y*width] = backgroundColor;
 			
 			}

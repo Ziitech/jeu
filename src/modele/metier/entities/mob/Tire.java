@@ -1,8 +1,12 @@
 package modele.metier.entities.mob;
 
+import java.awt.Rectangle;
+import java.util.ArrayList;
 import java.util.Random;
 
+import controleur.Manager;
 import modele.metier.Carte;
+import modele.technique.entities.EnemyTechnique;
 
 public class Tire extends Mob {
 	
@@ -49,5 +53,22 @@ public class Tire extends Mob {
 	}
 	
 	
+	public Rectangle getBounds(){
+		System.out.println("TIRE//// dasn getBounds le x = "+x+"le y = "+y );
+		return new Rectangle(x, y, 1540,1540);
+	}
+
+	public void checkCollisions() {
+		System.out.println("dans checkCollisions");
+		ArrayList<EnemyTechnique> enemies = Manager.getInstance().getEnemyList();
+		for(int i=0; i< enemies.size(); i++ ){
+			EnemyTechnique tempEnemy = enemies.get(i);
+			System.out.println("dasn la bouble");
+			if(getBounds().intersects(tempEnemy.getBounds())){
+				Manager.getInstance().removeEnemy(tempEnemy);
+			}
+		}
+		
+	}
 	
 }
